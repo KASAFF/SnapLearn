@@ -14,22 +14,37 @@ struct WordEntryWrapper: Codable {
 struct WordEntry: Codable, Identifiable {
     var id: String { word }
     let word: String
-    let phonetics: [Phonetic]
+  //  let phonetics: [Phonetic]
     let meanings: [Meaning]
     let sourceUrls: [String]
+
+    enum CodingKeys: CodingKey {
+        case word
+        case meanings
+        case sourceUrls
+    }
 }
 
-struct Phonetic: Codable {
-    let audio: String?
-    let text: String?
-    let sourceUrl: String?
-}
+//struct Phonetic: Codable, Identifiable {
+//    var id: UUID = UUID()
+//    let audio: String?
+//    let text: String?
+//    let sourceUrl: String?
+//}
 
-struct Meaning: Codable {
+struct Meaning: Codable, Identifiable {
+    var id: UUID = UUID()
     let partOfSpeech: String
     let definitions: [DefinitionEntity]
     let synonyms: [String]
     let antonyms: [String]
+
+    enum CodingKeys: CodingKey {
+        case partOfSpeech
+        case definitions
+        case synonyms
+        case antonyms
+    }
 }
 
 struct DefinitionEntity: Codable, Identifiable {

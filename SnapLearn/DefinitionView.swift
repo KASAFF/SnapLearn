@@ -8,71 +8,110 @@
 import SwiftUI
 
 struct DefinitionsView: View {
-
-    @State var isShowingError = false
-
-    @ObservedObject var viewModel: DefinitionViewModel
+    @StateObject var viewModel = DefinitionViewModel()
 
     var body: some View {
-        VStack {
+        VStack(alignment: .leading, spacing: 10) {
             HStack {
-                TextField("Please enter a new word", text: $viewModel.newWordText)
+                TextField("Enter word", text: $viewModel.newWordText)
                     .padding()
-                    .border(Color.gray, width: 1)
-                    .frame(maxWidth: .infinity)
+                    .background(Color(.systemGray6))
+                    .cornerRadius(8)
+
                 ScanButton(text: $viewModel.newWordText)
                     .frame(width: 100, height: 56, alignment: .leading)
             }
-            Spacer()
+            .padding()
+            .frame(maxWidth: .infinity)
 
-            ScrollView {
-                LazyVStack {
-                    Text(viewModel.searchedWord)
-                        .font(.title)
-                    if let translation = viewModel.translation, !translation.isEmpty {
-                        Text("Translation: \(translation)")
+            if let translation = viewModel.translation {
+                Text("Translation: \(translation)")
+                    .font(.headline)
+                    .padding(.horizontal)
+                    .padding(.bottom, 5)
+            }
+
+            if let wordEntry = viewModel.wordEntry {
+                Text(wordEntry.word)
+                    .font(.largeTitle)
+                    .bold()
+                    .padding(.horizontal)
+                    .padding(.bottom, 5)
+                
+                ForEach(Array(wordEntry.meanings.prefix(3).enumerated()), id: \.element.partOfSpeech) { index, meaning in // 2-3 meanings
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text(meaning.partOfSpeech)
+                            .font(.title2)
+                            .bold()
+
+                        ForEach(Array(meaning.definitions.prefix(2).enumerated()), id: \.element.definition) { index, definition in // 1-2 definitions per meaning
+                            VStack(alignment: .leading, spacing: 3) {
+                                Text(definition.definition)
+                                    .font(.body)
+                                    .lineLimit(3)
+                                if let example = definition.example {
+                                    Text("Example: \(example)")
+                                        .font(.footnote)
+                                        .foregroundColor(.secondary)
+                                        .lineLimit(2)
+                                }
+                                if !definition.synonyms.isEmpty {
+                                    Text("Synonyms: \(definition.synonyms.joined(separator: ", "))")
+                                        .font(.footnote)
+                                        .foregroundColor(.secondary)
+                                        .lineLimit(2)
+                                }
+                            }
+                            .padding(.vertical, 5)
+                        }
                     }
-                    ForEach(viewModel.definitionEntities, id: \.id) { entity in
-                        DefinitionCell(entity: entity)
-                    }
+                    .padding(.horizontal)
+                    .padding(.vertical, 5)
                 }
             }
-            .padding()
+
+            Spacer() // This will push the buttons to the bottom
 
             HStack {
-                Button {
-                    viewModel.fetchAndTranslate()
-                } label: {
+                Button(action: {
+                    Task {
+                        viewModel.fetchAndTranslate()
+                    }
+                }) {
                     Text("Find Definition")
                         .bold()
                         .padding()
                         .background(Color.blue)
                         .foregroundColor(Color.white)
                         .cornerRadius(10)
-                        .frame(height: 100)
+                        .frame(height: 50)
                 }
 
-                Button {
+                Spacer()
+
+                Button(action: {
                     // Implement the action to add a word for future learning
-                } label: {
+                }) {
                     Text("Add to learn list")
                         .bold()
                         .padding()
                         .background(Color.gray)
                         .foregroundColor(Color.white)
                         .cornerRadius(10)
-                        .frame(height: 100)
+                        .frame(height: 50)
                 }
             }
-            .frame(maxHeight: 100)
-            .padding()
+            .padding(.horizontal)
+            .padding(.bottom, 10)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .padding()
-        .alert("Не удалось найти слово", isPresented: $viewModel.isShowingError, actions: {
-            Button("OK", role: .cancel) { }
-        })
     }
 }
+
+
+
+
 
 #Preview {
     DefinitionsView(viewModel: .init())
