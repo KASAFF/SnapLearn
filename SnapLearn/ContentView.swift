@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var viewModel = DefinitionViewModel()
+    @Environment(\.modelContext) var modelContext
 
     var body: some View {
         TabView {
-            DefinitionsView(viewModel: viewModel)
+            DefinitionsView()
                 .tabItem {
                     Label("Definitions", systemImage: "book.fill")
                 }
