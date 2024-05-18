@@ -8,23 +8,39 @@
 import SwiftUI
 import SwiftData
 
+import SwiftUI
+import SwiftData
+
 struct WordListView: View {
     @Environment(\.modelContext) var modelContext
-  //  @StateObject var viewModel = WordListViewModel()
 
-    @State var words = [WordModel]()
+    @State private var words = [WordModel]()
+    @State private var showCardStack = false
 
     var body: some View {
         NavigationView {
-            List(words) { word in
-                NavigationLink(destination: WordDetailView(word: word)) {
-                    Text(word.word)
+            VStack {
+                if showCardStack {
+                    CardStackView(words: words)
+                } else {
+                    List(words) { word in
+                        NavigationLink(destination: WordDetailView(word: word)) {
+                            Text(word.word)
+                        }
+                    }
+                    .onAppear {
+                        fetchWords()
+                    }
                 }
             }
             .navigationTitle("My Words")
-        }
-        .onAppear {
-            fetchWords()
+            .toolbar {
+                Button {
+                    showCardStack = true
+                } label: {
+                    Text("Start Learning")
+                }
+            }
         }
     }
 
@@ -36,6 +52,7 @@ struct WordListView: View {
         }
     }
 }
+
 
 struct WordDetailView: View {
     let word: WordModel
