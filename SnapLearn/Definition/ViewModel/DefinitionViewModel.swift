@@ -48,7 +48,7 @@ class DefinitionViewModel: ObservableObject {
             let (data, _) = try await URLSession.shared.data(from: url)
             let translationResult = try JSONDecoder().decode(TranslationResult.self, from: data)
             guard translationResult.responseStatus == 200 else { return nil }
-            return translationResult.responseData.translatedText
+            return translationResult.responseData.translatedText.capitalized
         } catch {
             print("Failed to translate text: \(error)")
             return nil

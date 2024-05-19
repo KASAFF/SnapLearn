@@ -1,29 +1,28 @@
-//
-//  CardStackView.swift
-//  SnapLearn
-//
-//  Created by Aleksey Kosov on 19.05.2024.
-//
+import SwiftUI
 
 import SwiftUI
 
 struct CardStackView: View {
     var words: [WordModel]
+    var onLearnAgain: (WordModel) -> Void
+    var onSuccessfullyLearned: (WordModel) -> Void
+    var onEndLearning: () -> Void
 
     var body: some View {
         ZStack {
             ForEach(words) { card in
-                CardView(word: card)
+                CardView(word: card, onLearnAgain: onLearnAgain, onSuccessfullyLearned: onSuccessfullyLearned)
                     .onDisappear {
                         // Uncomment if you want to remove the card when it disappears
                         // removeCard(card)
                     }
+                    .allowsHitTesting(card != words.first)
             }
         }
         .navigationTitle("Learning")
         .toolbar {
             Button {
-                // Add your functionality here if needed
+                onEndLearning()
             } label: {
                 Text("End Learning")
             }

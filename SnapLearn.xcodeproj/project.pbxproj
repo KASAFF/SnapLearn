@@ -10,6 +10,7 @@
 		AB89149C2BF9042A00FCB2FC /* WordListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89149B2BF9042A00FCB2FC /* WordListViewModel.swift */; };
 		AB89149F2BF9451900FCB2FC /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89149E2BF9451900FCB2FC /* CardView.swift */; };
 		AB8914A12BF945FC00FCB2FC /* CardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8914A02BF945FC00FCB2FC /* CardStackView.swift */; };
+		AB8914A72BF9E64F00FCB2FC /* WordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8914A62BF9E64F00FCB2FC /* WordDetailView.swift */; };
 		ABA830702BF0F502001D7E4C /* SnapLearnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA8306F2BF0F502001D7E4C /* SnapLearnApp.swift */; };
 		ABA830722BF0F502001D7E4C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA830712BF0F502001D7E4C /* ContentView.swift */; };
 		ABA830742BF0F503001D7E4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABA830732BF0F503001D7E4C /* Assets.xcassets */; };
@@ -21,7 +22,7 @@
 		ABA830872BF10274001D7E4C /* BottomButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA830862BF10274001D7E4C /* BottomButtonsView.swift */; };
 		ABA830892BF10459001D7E4C /* DefinitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA830882BF10459001D7E4C /* DefinitionView.swift */; };
 		ABA8308B2BF10484001D7E4C /* WordListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA8308A2BF10484001D7E4C /* WordListView.swift */; };
-		ABA8308D2BF10991001D7E4C /* WordCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA8308C2BF10991001D7E4C /* WordCard.swift */; };
+		ABA8308D2BF10991001D7E4C /* WordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA8308C2BF10991001D7E4C /* WordModel.swift */; };
 		ABA8308F2BF11913001D7E4C /* ScanButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA8308E2BF11913001D7E4C /* ScanButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		AB89149B2BF9042A00FCB2FC /* WordListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewModel.swift; sourceTree = "<group>"; };
 		AB89149E2BF9451900FCB2FC /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		AB8914A02BF945FC00FCB2FC /* CardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackView.swift; sourceTree = "<group>"; };
+		AB8914A62BF9E64F00FCB2FC /* WordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailView.swift; sourceTree = "<group>"; };
 		ABA8306C2BF0F502001D7E4C /* SnapLearn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapLearn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABA8306F2BF0F502001D7E4C /* SnapLearnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapLearnApp.swift; sourceTree = "<group>"; };
 		ABA830712BF0F502001D7E4C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -41,7 +43,7 @@
 		ABA830862BF10274001D7E4C /* BottomButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonsView.swift; sourceTree = "<group>"; };
 		ABA830882BF10459001D7E4C /* DefinitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionView.swift; sourceTree = "<group>"; };
 		ABA8308A2BF10484001D7E4C /* WordListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListView.swift; sourceTree = "<group>"; };
-		ABA8308C2BF10991001D7E4C /* WordCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCard.swift; sourceTree = "<group>"; };
+		ABA8308C2BF10991001D7E4C /* WordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordModel.swift; sourceTree = "<group>"; };
 		ABA8308E2BF11913001D7E4C /* ScanButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,7 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				AB89149D2BF9451100FCB2FC /* View */,
-				AB89149B2BF9042A00FCB2FC /* WordListViewModel.swift */,
+				AB8914A52BF9E51800FCB2FC /* ViewModel */,
 			);
 			path = WordList;
 			sourceTree = "<group>";
@@ -69,10 +71,45 @@
 			isa = PBXGroup;
 			children = (
 				ABA8308A2BF10484001D7E4C /* WordListView.swift */,
+				AB8914A62BF9E64F00FCB2FC /* WordDetailView.swift */,
 				AB8914A02BF945FC00FCB2FC /* CardStackView.swift */,
 				AB89149E2BF9451900FCB2FC /* CardView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		AB8914A22BF9E4FB00FCB2FC /* Definition */ = {
+			isa = PBXGroup;
+			children = (
+				AB8914A42BF9E50E00FCB2FC /* ViewModel */,
+				AB8914A32BF9E50900FCB2FC /* View */,
+			);
+			path = Definition;
+			sourceTree = "<group>";
+		};
+		AB8914A32BF9E50900FCB2FC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ABA830822BF0FC1A001D7E4C /* DefinitionCell.swift */,
+				ABA830882BF10459001D7E4C /* DefinitionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AB8914A42BF9E50E00FCB2FC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				ABA830842BF101FE001D7E4C /* DefinitionViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AB8914A52BF9E51800FCB2FC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AB89149B2BF9042A00FCB2FC /* WordListViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		ABA830632BF0F502001D7E4C = {
@@ -97,9 +134,7 @@
 				ABA8306F2BF0F502001D7E4C /* SnapLearnApp.swift */,
 				ABA8307F2BF0F7DB001D7E4C /* Model */,
 				ABA830712BF0F502001D7E4C /* ContentView.swift */,
-				ABA830842BF101FE001D7E4C /* DefinitionViewModel.swift */,
-				ABA830822BF0FC1A001D7E4C /* DefinitionCell.swift */,
-				ABA830882BF10459001D7E4C /* DefinitionView.swift */,
+				AB8914A22BF9E4FB00FCB2FC /* Definition */,
 				ABA8308E2BF11913001D7E4C /* ScanButton.swift */,
 				AB89149A2BF9041600FCB2FC /* WordList */,
 				ABA830862BF10274001D7E4C /* BottomButtonsView.swift */,
@@ -122,7 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				ABA830802BF0F7E6001D7E4C /* WordEntity.swift */,
-				ABA8308C2BF10991001D7E4C /* WordCard.swift */,
+				ABA8308C2BF10991001D7E4C /* WordModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -201,7 +236,7 @@
 				AB8914A12BF945FC00FCB2FC /* CardStackView.swift in Sources */,
 				ABA830722BF0F502001D7E4C /* ContentView.swift in Sources */,
 				ABA830832BF0FC1A001D7E4C /* DefinitionCell.swift in Sources */,
-				ABA8308D2BF10991001D7E4C /* WordCard.swift in Sources */,
+				ABA8308D2BF10991001D7E4C /* WordModel.swift in Sources */,
 				ABA830892BF10459001D7E4C /* DefinitionView.swift in Sources */,
 				ABA830812BF0F7E6001D7E4C /* WordEntity.swift in Sources */,
 				ABA8308B2BF10484001D7E4C /* WordListView.swift in Sources */,
@@ -209,6 +244,7 @@
 				ABA830852BF101FE001D7E4C /* DefinitionViewModel.swift in Sources */,
 				ABA8307E2BF0F6C6001D7E4C /* URLs.swift in Sources */,
 				ABA8308F2BF11913001D7E4C /* ScanButton.swift in Sources */,
+				AB8914A72BF9E64F00FCB2FC /* WordDetailView.swift in Sources */,
 				AB89149C2BF9042A00FCB2FC /* WordListViewModel.swift in Sources */,
 				ABA830702BF0F502001D7E4C /* SnapLearnApp.swift in Sources */,
 			);

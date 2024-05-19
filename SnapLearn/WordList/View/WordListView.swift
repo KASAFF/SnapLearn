@@ -8,9 +8,6 @@
 import SwiftUI
 import SwiftData
 
-import SwiftUI
-import SwiftData
-
 struct WordListView: View {
     @Environment(\.modelContext) var modelContext
 
@@ -21,11 +18,32 @@ struct WordListView: View {
         NavigationView {
             VStack {
                 if showCardStack {
-                    CardStackView(words: words)
+                    CardStackView(
+                        words: words,
+                        onLearnAgain: { word in
+                            print("Learn Again: \(word.word)")
+                        },
+                        onSuccessfullyLearned: { word in
+                            print("Successfully Learned: \(word.word)")
+                            words.removeAll { $0.id == word.id }
+                        },
+                        onEndLearning: {
+                            showCardStack = false
+                        }
+                    )
                 } else {
-                    List(words) { word in
-                        NavigationLink(destination: WordDetailView(word: word)) {
-                            Text(word.word)
+                    List {
+                        ForEach(words) { word in
+                            NavigationLink(destination: WordDetailView(word: word)) {
+                                Text(word.word)
+                            }
+                            .swipeActions {
+                                Button(role: .destructive) {
+                                    deleteWord(word)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
+                            }
                         }
                     }
                     .onAppear {
@@ -35,10 +53,12 @@ struct WordListView: View {
             }
             .navigationTitle("My Words")
             .toolbar {
-                Button {
-                    showCardStack = true
-                } label: {
-                    Text("Start Learning")
+                if !showCardStack {
+                    Button {
+                        showCardStack = true
+                    } label: {
+                        Text("Start Learning")
+                    }
                 }
             }
         }
@@ -51,61 +71,20 @@ struct WordListView: View {
             print(error)
         }
     }
+
+    private func deleteWord(_ word: WordModel) {
+        do {
+            modelContext.delete(word)
+            try modelContext.save()
+            fetchWords()
+        } catch {
+            print(error)
+        }
+    }
 }
 
-
-struct WordDetailView: View {
-    let word: WordModel
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text(word.word)
-                .font(.largeTitle)
-                .bold()
-
-            if let translation = word.translation {
-                Text("Translation: \(translation)")
-                    .font(.headline)
-            }
-
-            ScrollView {
-                ForEach(word.meanings) { meaning in
-                    VStack(alignment: .leading, spacing: 5) {
-                        Text(meaning.partOfSpeech)
-                            .font(.title2)
-                            .bold()
-
-                        ForEach(meaning.definitions) { definition in
-                            VStack(alignment: .leading, spacing: 3) {
-                                Text(definition.definition)
-                                    .font(.body)
-                                    .lineLimit(3)
-                                if let example = definition.example {
-                                    Text("Example: \(example)")
-                                        .font(.footnote)
-                                        .foregroundColor(.secondary)
-                                        .lineLimit(2)
-                                }
-                                if !definition.synonyms.isEmpty {
-                                    Text("Synonyms: \(definition.synonyms.joined(separator: ", "))")
-                                        .font(.footnote)
-                                        .foregroundColor(.secondary)
-                                        .lineLimit(2)
-                                }
-                            }
-                            .padding(.vertical, 5)
-                        }
-                    }
-                    .padding(.horizontal)
-                    .padding(.vertical, 5)
-                }
-            }
-
-            Spacer()
-        }
-        .padding()
-        .navigationTitle(word.word)
-    }
+#Preview {
+    WordListView()
 }
 
 #Preview {
