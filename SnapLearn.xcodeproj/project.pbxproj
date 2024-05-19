@@ -24,6 +24,8 @@
 		ABA8308B2BF10484001D7E4C /* WordListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA8308A2BF10484001D7E4C /* WordListView.swift */; };
 		ABA8308D2BF10991001D7E4C /* WordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA8308C2BF10991001D7E4C /* WordModel.swift */; };
 		ABA8308F2BF11913001D7E4C /* ScanButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA8308E2BF11913001D7E4C /* ScanButton.swift */; };
+		ABE5F7DD2BF9F1DB00C7DF50 /* CardFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5F7DC2BF9F1DB00C7DF50 /* CardFront.swift */; };
+		ABE5F7DF2BF9F21A00C7DF50 /* CardBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5F7DE2BF9F21A00C7DF50 /* CardBack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		ABA8308A2BF10484001D7E4C /* WordListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListView.swift; sourceTree = "<group>"; };
 		ABA8308C2BF10991001D7E4C /* WordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordModel.swift; sourceTree = "<group>"; };
 		ABA8308E2BF11913001D7E4C /* ScanButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanButton.swift; sourceTree = "<group>"; };
+		ABE5F7DC2BF9F1DB00C7DF50 /* CardFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFront.swift; sourceTree = "<group>"; };
+		ABE5F7DE2BF9F21A00C7DF50 /* CardBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +77,7 @@
 				ABA8308A2BF10484001D7E4C /* WordListView.swift */,
 				AB8914A62BF9E64F00FCB2FC /* WordDetailView.swift */,
 				AB8914A02BF945FC00FCB2FC /* CardStackView.swift */,
-				AB89149E2BF9451900FCB2FC /* CardView.swift */,
+				ABE5F7DB2BF9F1C800C7DF50 /* CardView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -162,6 +166,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		ABE5F7DB2BF9F1C800C7DF50 /* CardView */ = {
+			isa = PBXGroup;
+			children = (
+				AB89149E2BF9451900FCB2FC /* CardView.swift */,
+				ABE5F7DC2BF9F1DB00C7DF50 /* CardFront.swift */,
+				ABE5F7DE2BF9F21A00C7DF50 /* CardBack.swift */,
+			);
+			path = CardView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -240,11 +254,13 @@
 				ABA830892BF10459001D7E4C /* DefinitionView.swift in Sources */,
 				ABA830812BF0F7E6001D7E4C /* WordEntity.swift in Sources */,
 				ABA8308B2BF10484001D7E4C /* WordListView.swift in Sources */,
+				ABE5F7DF2BF9F21A00C7DF50 /* CardBack.swift in Sources */,
 				AB89149F2BF9451900FCB2FC /* CardView.swift in Sources */,
 				ABA830852BF101FE001D7E4C /* DefinitionViewModel.swift in Sources */,
 				ABA8307E2BF0F6C6001D7E4C /* URLs.swift in Sources */,
 				ABA8308F2BF11913001D7E4C /* ScanButton.swift in Sources */,
 				AB8914A72BF9E64F00FCB2FC /* WordDetailView.swift in Sources */,
+				ABE5F7DD2BF9F1DB00C7DF50 /* CardFront.swift in Sources */,
 				AB89149C2BF9042A00FCB2FC /* WordListViewModel.swift in Sources */,
 				ABA830702BF0F502001D7E4C /* SnapLearnApp.swift in Sources */,
 			);
