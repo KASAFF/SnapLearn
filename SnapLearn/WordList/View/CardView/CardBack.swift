@@ -6,11 +6,15 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CardBack: View {
     var word: WordModel
     let width: CGFloat
     let height: CGFloat
+
+    let imageFetcher = UnsplashImageFetcher()
+
     @Binding var degree: Double
 
     var body: some View {
@@ -52,10 +56,20 @@ struct CardBack: View {
                         .padding(.vertical, 5)
                     }
                 }
+
+                if let imageURL = imageFetcher.imageURL {
+                    KFImage(URL(string: imageURL))
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+
             }
             .padding(20)
         }
         .frame(width: width, height: height)
         .rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
+        .task {
+            imageFetcher.fetchImage(for: word.word)
+        }
     }
 }

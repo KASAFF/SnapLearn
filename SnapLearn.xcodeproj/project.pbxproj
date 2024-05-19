@@ -26,6 +26,8 @@
 		ABA8308F2BF11913001D7E4C /* ScanButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA8308E2BF11913001D7E4C /* ScanButton.swift */; };
 		ABE5F7DD2BF9F1DB00C7DF50 /* CardFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5F7DC2BF9F1DB00C7DF50 /* CardFront.swift */; };
 		ABE5F7DF2BF9F21A00C7DF50 /* CardBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5F7DE2BF9F21A00C7DF50 /* CardBack.swift */; };
+		ABE5F7E22BFA975800C7DF50 /* Unsplash.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5F7E12BFA975800C7DF50 /* Unsplash.swift */; };
+		ABE5F7E52BFA98A200C7DF50 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = ABE5F7E42BFA98A200C7DF50 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,7 @@
 		ABA8308E2BF11913001D7E4C /* ScanButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanButton.swift; sourceTree = "<group>"; };
 		ABE5F7DC2BF9F1DB00C7DF50 /* CardFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFront.swift; sourceTree = "<group>"; };
 		ABE5F7DE2BF9F21A00C7DF50 /* CardBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBack.swift; sourceTree = "<group>"; };
+		ABE5F7E12BFA975800C7DF50 /* Unsplash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unsplash.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABE5F7E52BFA98A200C7DF50 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +147,7 @@
 				AB89149A2BF9041600FCB2FC /* WordList */,
 				ABA830862BF10274001D7E4C /* BottomButtonsView.swift */,
 				ABA8307D2BF0F6C6001D7E4C /* URLs.swift */,
+				ABE5F7E02BFA974600C7DF50 /* Network */,
 				ABA830732BF0F503001D7E4C /* Assets.xcassets */,
 				ABA830752BF0F503001D7E4C /* Preview Content */,
 			);
@@ -176,6 +181,14 @@
 			path = CardView;
 			sourceTree = "<group>";
 		};
+		ABE5F7E02BFA974600C7DF50 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				ABE5F7E12BFA975800C7DF50 /* Unsplash.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -192,6 +205,9 @@
 			dependencies = (
 			);
 			name = SnapLearn;
+			packageProductDependencies = (
+				ABE5F7E42BFA98A200C7DF50 /* Kingfisher */,
+			);
 			productName = SnapLearn;
 			productReference = ABA8306C2BF0F502001D7E4C /* SnapLearn.app */;
 			productType = "com.apple.product-type.application";
@@ -220,6 +236,9 @@
 				Base,
 			);
 			mainGroup = ABA830632BF0F502001D7E4C;
+			packageReferences = (
+				ABE5F7E32BFA98A200C7DF50 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = ABA8306D2BF0F502001D7E4C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -261,6 +280,7 @@
 				ABA8308F2BF11913001D7E4C /* ScanButton.swift in Sources */,
 				AB8914A72BF9E64F00FCB2FC /* WordDetailView.swift in Sources */,
 				ABE5F7DD2BF9F1DB00C7DF50 /* CardFront.swift in Sources */,
+				ABE5F7E22BFA975800C7DF50 /* Unsplash.swift in Sources */,
 				AB89149C2BF9042A00FCB2FC /* WordListViewModel.swift in Sources */,
 				ABA830702BF0F502001D7E4C /* SnapLearnApp.swift in Sources */,
 			);
@@ -478,6 +498,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ABE5F7E32BFA98A200C7DF50 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ABE5F7E42BFA98A200C7DF50 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ABE5F7E32BFA98A200C7DF50 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ABA830642BF0F502001D7E4C /* Project object */;
 }

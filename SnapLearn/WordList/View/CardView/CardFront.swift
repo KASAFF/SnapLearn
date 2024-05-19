@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CardFront: View {
     var word: WordModel
@@ -17,7 +18,6 @@ struct CardFront: View {
         ZStack {
             RoundedRectangle(cornerRadius: 25)
                 .fill(Color.white)
-
             Text(word.word)
                 .font(.largeTitle)
                 .padding()
