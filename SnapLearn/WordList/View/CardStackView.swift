@@ -15,64 +15,91 @@ struct CardStackView: View {
     let width: CGFloat = 320
     let height: CGFloat = 440
     let durationAndDelay: CGFloat = 0.15
+    let threshold: CGFloat = 40  // Threshold to start showing labels
+    let maxOpacityThreshold: CGFloat = 100  // Max opacity threshold
 
     var body: some View {
         ZStack {
-            if currentIndex < words.count {
-                // Next card below the current card
-                if currentIndex + 1 < words.count {
+            // Labels
+            VStack {
+                HStack {
+                    Text("Needs Practice")
+                        .font(.headline)
+                        .bold()
+                        .foregroundColor(.white)
+                        .padding(8)
+                        .background(Color.red)
+                        .cornerRadius(10)
+                        .opacity(opacityForLabel(side: .left))
+                        .padding(.leading, 20)
+
+                    Spacer()
+
+                    Text("Got It")
+                        .font(.headline)
+                        .bold()
+                        .foregroundColor(.white)
+                        .padding(8)
+                        .background(Color.green)
+                        .cornerRadius(10)
+                        .opacity(opacityForLabel(side: .right))
+                        .padding(.trailing, 20)
+                }
+                .padding(.top, 20)
+
+                Spacer()
+            }
+
+            // Card
+            VStack {
+                Spacer()
+
+                if currentIndex < words.count {
                     ZStack {
-                        CardFront(word: words[currentIndex + 1], width: width, height: height, degree: .constant(0))
+                        CardFront(word: words[currentIndex], width: width, height: height, degree: $frontDegree)
+                        CardBack(word: words[currentIndex], width: width, height: height, degree: $backDegree)
                     }
                     .frame(width: width, height: height)
-                    .background(RoundedRectangle(cornerRadius: 25, style: .continuous).fill(Color.white).shadow(radius: 6))
-                    .opacity(0.5)
-                    .offset(y: 10)
-                }
-
-                // Current card
-                ZStack {
-                    CardFront(word: words[currentIndex], width: width, height: height, degree: $frontDegree)
-                    CardBack(word: words[currentIndex], width: width, height: height, degree: $backDegree)
-                }
-                .frame(width: width, height: height)
-                .background(RoundedRectangle(cornerRadius: 25, style: .continuous).fill(Color.white).shadow(radius: 6))
-                .onTapGesture {
-                    flipCard()
-                }
-                .offset(x: offset.width, y: offset.height * 0.2)
-                .rotationEffect(.degrees(Double(offset.width / 40)))
-                .gesture(
-                    DragGesture()
-                        .onChanged { gesture in
-                            offset = gesture.translation
-                        }
-                        .onEnded { _ in
-                            if abs(offset.width) > 100 {
-                                if offset.width > 0 {
-                                    onSuccessfullyLearned(words[currentIndex])
+                    .shadow(radius: 6)
+                    .onTapGesture {
+                        flipCard()
+                    }
+                    .offset(x: offset.width, y: offset.height * 0.2)
+                    .rotationEffect(.degrees(Double(offset.width / 40)))
+                    .gesture(
+                        DragGesture()
+                            .onChanged { gesture in
+                                offset = gesture.translation
+                            }
+                            .onEnded { _ in
+                                if abs(offset.width) > maxOpacityThreshold {
+                                    if offset.width > 0 {
+                                        onSuccessfullyLearned(words[currentIndex])
+                                    } else {
+                                        onLearnAgain(words[currentIndex])
+                                    }
+                                    isSwiped = true
+                                    withAnimation(.easeOut(duration: 0.3)) {
+                                        offset = CGSize(width: offset.width * 5, height: 0)
+                                    }
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                        loadNextCard()
+                                    }
                                 } else {
-                                    onLearnAgain(words[currentIndex])
-                                }
-                                isSwiped = true
-                                withAnimation(.easeOut(duration: 0.3)) {
-                                    offset = CGSize(width: offset.width * 5, height: 0)
-                                }
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                    loadNextCard()
-                                }
-                            } else {
-                                withAnimation {
-                                    offset = .zero
+                                    withAnimation {
+                                        offset = .zero
+                                    }
                                 }
                             }
-                        }
-                )
-                .opacity(isSwiped ? 0 : 1)
-            } else {
-                Text("No more words!")
-                    .font(.largeTitle)
-                    .foregroundColor(.gray)
+                    )
+                    .opacity(isSwiped ? 0 : 1)
+                } else {
+                    Text("No more words!")
+                        .font(.largeTitle)
+                        .foregroundColor(.gray)
+                }
+
+                Spacer()
             }
         }
         .navigationTitle("Learning")
@@ -115,6 +142,20 @@ struct CardStackView: View {
         isFlipped = false
         isSwiped = false
         offset = .zero
+    }
+
+    private func opacityForLabel(side: SwipeSide) -> Double {
+        let opacity: CGFloat
+        if side == .left {
+            opacity = min(max((-offset.width - threshold) / (maxOpacityThreshold - threshold), 0), 1)
+        } else {
+            opacity = min(max((offset.width - threshold) / (maxOpacityThreshold - threshold), 0), 1)
+        }
+        return Double(opacity)
+    }
+
+    enum SwipeSide {
+        case left, right
     }
 }
 

@@ -17,7 +17,6 @@ struct CardBack: View {
         ZStack {
             RoundedRectangle(cornerRadius: 25)
                 .fill(Color.white)
-                .shadow(radius: 6)
 
             VStack {
                 if let translation = word.translation {
