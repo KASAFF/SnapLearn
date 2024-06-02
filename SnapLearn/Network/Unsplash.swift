@@ -8,9 +8,9 @@ class NetworkManager {
     private let baseURL = "https://api.unsplash.com/search/photos"
     private let accessKey = "4w5CFGQ_Ub5RkUrnp6C1pVtOtBesTU4zTux0hdxZzwE"
 
-    func fetchImageURL(for query: String) -> AnyPublisher<String?, Never> {
+    func fetchImageURL(for query: String) async throws -> String? {
         guard var urlComponents = URLComponents(string: baseURL) else {
-            return Just(nil).eraseToAnyPublisher()
+            return nil
         }
 
         urlComponents.queryItems = [
@@ -21,15 +21,12 @@ class NetworkManager {
         ]
 
         guard let url = urlComponents.url else {
-            return Just(nil).eraseToAnyPublisher()
+            return nil
         }
 
-        return URLSession.shared.dataTaskPublisher(for: url)
-            .map { $0.data }
-            .decode(type: UnsplashSearchResult.self, decoder: JSONDecoder())
-            .map { $0.results.first?.urls.regular }
-            .replaceError(with: nil)
-            .eraseToAnyPublisher()
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let searchResult = try JSONDecoder().decode(UnsplashSearchResult.self, from: data)
+        return searchResult.results.first?.urls.regular
     }
 }
 
@@ -45,16 +42,17 @@ struct UnsplashImage: Decodable {
     }
 }
 
+final class UnsplashImageFetcher: ObservableObject {
 
-class UnsplashImageFetcher: ObservableObject {
-    @Published var imageURL: String?
-
-    private var cancellable: AnyCancellable?
-
-    func fetchImage(for word: String) {
-        cancellable = NetworkManager.shared.fetchImageURL(for: word)
-            .compactMap { $0 }
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.imageURL, on: self)
+    func fetchImage(for word: String) async -> String? {
+        do {
+            let url = try await NetworkManager.shared.fetchImageURL(for: word)
+            return url
+        } catch {
+            print("Failed to fetch image URL: \(error)")
+            return nil
+        }
     }
+    
 }
+

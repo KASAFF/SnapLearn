@@ -13,22 +13,22 @@ struct CardBack: View {
     let width: CGFloat
     let height: CGFloat
 
-    let imageFetcher = UnsplashImageFetcher()
+    private let imageFetcher = UnsplashImageFetcher()
 
     @Binding var degree: Double
     @State private var imageLoaded: Bool = false
     @State private var loadFailed: Bool = false
+    @State private var cardImageUrl: String?
 
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 25)
+            RoundedRectangle(cornerRadius: 24)
                 .fill(Color.white)
 
             VStack {
                 if let translation = word.translation {
                     Text(translation)
                         .font(.largeTitle)
-                        .padding(.bottom)
                 }
 
                 if let meaning = word.meanings.first {
@@ -58,28 +58,27 @@ struct CardBack: View {
                         .padding(.vertical, 5)
                     }
                 }
-
-                if let imageURL = imageFetcher.imageURL {
-                    KFImage(URL(string: imageURL))
-                        .placeholder {
-                            ProgressView()
-                        }
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-
-                        .frame(height: height * 0.4)
-                } else {
-                    NotAvailablePhotoView()
-                    .frame(height: height * 0.4)
+                
+                VStack {
+                    if let imageURL = cardImageUrl {
+                        KFImage(URL(string: imageURL))
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: height * 0.4)
+                            .clipShape(.rect(cornerRadius: 12))
+                    } else {
+                        NotAvailablePhotoView()
+                            .frame(height: height * 0.4)
+                    }
                 }
 
             }
-            .padding(20)
+            .padding(.horizontal, 16)
         }
         .frame(width: width, height: height)
         .rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
         .task {
-            imageFetcher.fetchImage(for: word.word)
+            cardImageUrl = await imageFetcher.fetchImage(for: word.word)
         }
     }
 }

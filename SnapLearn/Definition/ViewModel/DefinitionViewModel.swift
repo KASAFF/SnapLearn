@@ -21,7 +21,7 @@ class DefinitionViewModel: ObservableObject {
     @Published var isShowingError = false
     @Published var selectedLanguage = "ru"
     @Published var languages = ["ru", "es", "fr", "de", "it", "zh"]
-
+    @Published var isLoading = false
 
     func findDefinition() async -> WordEntry? {
         let baseURL = URLs.dictionaryapi
@@ -57,6 +57,7 @@ class DefinitionViewModel: ObservableObject {
 
     func fetchAndTranslate() {
         Task {
+            isLoading = true
             async let wordEntryTask = findDefinition()
             async let translationTask = translateText(targetLang: selectedLanguage)
 
@@ -67,6 +68,7 @@ class DefinitionViewModel: ObservableObject {
             self.translation = translation
             self.wordEntry = wordEntry
             self.wordModel = model
+            isLoading = false
         }
     }
 

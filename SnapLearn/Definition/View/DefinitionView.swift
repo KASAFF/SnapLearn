@@ -124,6 +124,19 @@ struct DefinitionsView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .padding()
+
+        .overlay {
+            if viewModel.isLoading {
+                ZStack {
+                    Color.black.opacity(0.4)
+                        .ignoresSafeArea()
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                        .scaleEffect(1.5)
+                }
+            }
+        }
+
     }
 
     func saveWordForFutureLearning() async {
@@ -133,7 +146,6 @@ struct DefinitionsView: View {
             modelContext.insert(word)
             try modelContext.save()
         } catch {
-            // Handle the error appropriately
             print("Failed to save word: \(error)")
         }
     }

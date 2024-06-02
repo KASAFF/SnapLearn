@@ -16,7 +16,7 @@ struct CardFront: View {
 
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 25)
+            RoundedRectangle(cornerRadius: 24)
                 .fill(Color.white)
             Text(word.word)
                 .font(.largeTitle)
