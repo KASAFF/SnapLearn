@@ -16,6 +16,8 @@ struct CardBack: View {
     let imageFetcher = UnsplashImageFetcher()
 
     @Binding var degree: Double
+    @State private var imageLoaded: Bool = false
+    @State private var loadFailed: Bool = false
 
     var body: some View {
         ZStack {
@@ -59,8 +61,16 @@ struct CardBack: View {
 
                 if let imageURL = imageFetcher.imageURL {
                     KFImage(URL(string: imageURL))
+                        .placeholder {
+                            ProgressView()
+                        }
                         .resizable()
                         .aspectRatio(contentMode: .fit)
+
+                        .frame(height: height * 0.4)
+                } else {
+                    NotAvailablePhotoView()
+                    .frame(height: height * 0.4)
                 }
 
             }

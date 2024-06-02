@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CardStackView: View {
-    var words: [WordModel]
+    @State private var words: [WordModel]
     var onLearnAgain: (WordModel) -> Void
     var onSuccessfullyLearned: (WordModel) -> Void
     var onEndLearning: () -> Void
@@ -18,9 +18,20 @@ struct CardStackView: View {
     let threshold: CGFloat = 40  // Threshold to start showing labels
     let maxOpacityThreshold: CGFloat = 100  // Max opacity threshold
 
+    init(
+        words: [WordModel],
+        onLearnAgain: @escaping (WordModel) -> Void,
+        onSuccessfullyLearned: @escaping (WordModel) -> Void,
+        onEndLearning: @escaping () -> Void
+    ) {
+        _words = State(initialValue: words)
+        self.onLearnAgain = onLearnAgain
+        self.onSuccessfullyLearned = onSuccessfullyLearned
+        self.onEndLearning = onEndLearning
+    }
+
     var body: some View {
         ZStack {
-            // Labels
             VStack {
                 HStack {
                     Text("Needs Practice")
@@ -50,53 +61,60 @@ struct CardStackView: View {
                 Spacer()
             }
 
-            // Card
             VStack {
                 Spacer()
 
-                if currentIndex < words.count {
-                    ZStack {
-                        CardFront(word: words[currentIndex], width: width, height: height, degree: $frontDegree)
-                        CardBack(word: words[currentIndex], width: width, height: height, degree: $backDegree)
-                    }
-                    .frame(width: width, height: height)
-                    .shadow(radius: 6)
-                    .onTapGesture {
-                        flipCard()
-                    }
-                    .offset(x: offset.width, y: offset.height * 0.2)
-                    .rotationEffect(.degrees(Double(offset.width / 40)))
-                    .gesture(
-                        DragGesture()
-                            .onChanged { gesture in
-                                offset = gesture.translation
-                            }
-                            .onEnded { _ in
-                                if abs(offset.width) > maxOpacityThreshold {
-                                    if offset.width > 0 {
-                                        onSuccessfullyLearned(words[currentIndex])
-                                    } else {
-                                        onLearnAgain(words[currentIndex])
-                                    }
-                                    isSwiped = true
-                                    withAnimation(.easeOut(duration: 0.3)) {
-                                        offset = CGSize(width: offset.width * 5, height: 0)
-                                    }
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                        loadNextCard()
-                                    }
-                                } else {
-                                    withAnimation {
-                                        offset = .zero
-                                    }
-                                }
-                            }
-                    )
-                    .opacity(isSwiped ? 0 : 1)
-                } else {
+                if words.isEmpty {
                     Text("No more words!")
                         .font(.largeTitle)
                         .foregroundColor(.gray)
+                } else {
+                    ZStack {
+                        ForEach(words) { word in
+                            if let index = words.firstIndex(where: { $0.id == word.id }), index == currentIndex {
+                                ZStack {
+                                    CardFront(word: word, width: width, height: height, degree: $frontDegree)
+                                    CardBack(word: word, width: width, height: height, degree: $backDegree)
+                                }
+                                .frame(width: width, height: height)
+                                .shadow(radius: 6)
+                                .onTapGesture {
+                                    flipCard()
+                                }
+                                .offset(x: offset.width, y: offset.height * 0.2)
+                                .rotationEffect(.degrees(Double(offset.width / 40)))
+                                .gesture(
+                                    DragGesture()
+                                        .onChanged { gesture in
+                                            offset = gesture.translation
+                                        }
+                                        .onEnded { _ in
+                                            if abs(offset.width) > maxOpacityThreshold {
+                                                if offset.width > 0 {
+                                                    onSuccessfullyLearned(word)
+                                                    removeCurrentWord()
+                                                } else {
+                                                    onLearnAgain(word)
+                                                    moveCurrentWordToEnd()
+                                                }
+                                                isSwiped = true
+                                                withAnimation(.easeOut(duration: 0.3)) {
+                                                    offset = CGSize(width: offset.width * 5, height: 0)
+                                                }
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                                    loadNextCard()
+                                                }
+                                            } else {
+                                                withAnimation {
+                                                    offset = .zero
+                                                }
+                                            }
+                                        }
+                                )
+                                .opacity(isSwiped ? 0 : 1)
+                            }
+                        }
+                    }
                 }
 
                 Spacer()
@@ -133,6 +151,9 @@ struct CardStackView: View {
 
     func loadNextCard() {
         currentIndex += 1
+        if currentIndex >= words.count {
+            currentIndex = 0
+        }
         backDegree = -90.0
         frontDegree = 0.0
         resetCardState()
@@ -142,6 +163,21 @@ struct CardStackView: View {
         isFlipped = false
         isSwiped = false
         offset = .zero
+    }
+
+    func removeCurrentWord() {
+        words.remove(at: currentIndex)
+        if currentIndex >= words.count {
+            currentIndex = 0
+        }
+    }
+
+    func moveCurrentWordToEnd() {
+        let word = words.remove(at: currentIndex)
+        words.append(word)
+        if currentIndex >= words.count {
+            currentIndex = 0
+        }
     }
 
     private func opacityForLabel(side: SwipeSide) -> Double {
@@ -157,24 +193,4 @@ struct CardStackView: View {
     enum SwipeSide {
         case left, right
     }
-}
-
-#Preview {
-    CardStackView(
-        words: [
-            WordModel(word: "Example", translation: "Ejemplo", meanings: [
-                MeaningPresentationModel(partOfSpeech: "Noun", definitions: [
-                    Definition(definition: "A representative form or pattern", synonyms: ["instance"], antonyms: [], example: "This is an example sentence.")
-                ])
-            ]),
-            WordModel(word: "Test", translation: "Prueba", meanings: [
-                MeaningPresentationModel(partOfSpeech: "Verb", definitions: [
-                    Definition(definition: "A procedure intended to establish the quality, performance, or reliability of something.", synonyms: ["trial"], antonyms: [], example: "This is a test sentence.")
-                ])
-            ])
-        ],
-        onLearnAgain: { word in print("Learn Again: \(word.word)") },
-        onSuccessfullyLearned: { word in print("Successfully Learned: \(word.word)") },
-        onEndLearning: { print("End Learning") }
-    )
 }

@@ -14,6 +14,7 @@ class NetworkManager {
         }
 
         urlComponents.queryItems = [
+            URLQueryItem(name: "orientation", value: "landscape"),
             URLQueryItem(name: "query", value: query),
             URLQueryItem(name: "client_id", value: accessKey),
             URLQueryItem(name: "per_page", value: "1")

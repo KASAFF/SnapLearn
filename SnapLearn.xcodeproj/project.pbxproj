@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB00535D2C0C9EBB001ACFFF /* NotAvailablePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00535C2C0C9EBB001ACFFF /* NotAvailablePhotoView.swift */; };
 		AB89149C2BF9042A00FCB2FC /* WordListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89149B2BF9042A00FCB2FC /* WordListViewModel.swift */; };
 		AB89149F2BF9451900FCB2FC /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89149E2BF9451900FCB2FC /* CardView.swift */; };
 		AB8914A12BF945FC00FCB2FC /* CardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8914A02BF945FC00FCB2FC /* CardStackView.swift */; };
@@ -19,7 +20,6 @@
 		ABA830812BF0F7E6001D7E4C /* WordEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA830802BF0F7E6001D7E4C /* WordEntity.swift */; };
 		ABA830832BF0FC1A001D7E4C /* DefinitionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA830822BF0FC1A001D7E4C /* DefinitionCell.swift */; };
 		ABA830852BF101FE001D7E4C /* DefinitionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA830842BF101FE001D7E4C /* DefinitionViewModel.swift */; };
-		ABA830872BF10274001D7E4C /* BottomButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA830862BF10274001D7E4C /* BottomButtonsView.swift */; };
 		ABA830892BF10459001D7E4C /* DefinitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA830882BF10459001D7E4C /* DefinitionView.swift */; };
 		ABA8308B2BF10484001D7E4C /* WordListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA8308A2BF10484001D7E4C /* WordListView.swift */; };
 		ABA8308D2BF10991001D7E4C /* WordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA8308C2BF10991001D7E4C /* WordModel.swift */; };
@@ -31,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB00535C2C0C9EBB001ACFFF /* NotAvailablePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotAvailablePhotoView.swift; sourceTree = "<group>"; };
 		AB89149B2BF9042A00FCB2FC /* WordListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewModel.swift; sourceTree = "<group>"; };
 		AB89149E2BF9451900FCB2FC /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		AB8914A02BF945FC00FCB2FC /* CardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackView.swift; sourceTree = "<group>"; };
@@ -44,7 +45,6 @@
 		ABA830802BF0F7E6001D7E4C /* WordEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordEntity.swift; sourceTree = "<group>"; };
 		ABA830822BF0FC1A001D7E4C /* DefinitionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionCell.swift; sourceTree = "<group>"; };
 		ABA830842BF101FE001D7E4C /* DefinitionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionViewModel.swift; sourceTree = "<group>"; };
-		ABA830862BF10274001D7E4C /* BottomButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonsView.swift; sourceTree = "<group>"; };
 		ABA830882BF10459001D7E4C /* DefinitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionView.swift; sourceTree = "<group>"; };
 		ABA8308A2BF10484001D7E4C /* WordListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListView.swift; sourceTree = "<group>"; };
 		ABA8308C2BF10991001D7E4C /* WordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordModel.swift; sourceTree = "<group>"; };
@@ -71,6 +71,7 @@
 			children = (
 				AB89149D2BF9451100FCB2FC /* View */,
 				AB8914A52BF9E51800FCB2FC /* ViewModel */,
+				AB00535C2C0C9EBB001ACFFF /* NotAvailablePhotoView.swift */,
 			);
 			path = WordList;
 			sourceTree = "<group>";
@@ -140,12 +141,11 @@
 			isa = PBXGroup;
 			children = (
 				ABA8306F2BF0F502001D7E4C /* SnapLearnApp.swift */,
-				ABA8307F2BF0F7DB001D7E4C /* Model */,
 				ABA830712BF0F502001D7E4C /* ContentView.swift */,
+				ABA8307F2BF0F7DB001D7E4C /* Model */,
 				AB8914A22BF9E4FB00FCB2FC /* Definition */,
 				ABA8308E2BF11913001D7E4C /* ScanButton.swift */,
 				AB89149A2BF9041600FCB2FC /* WordList */,
-				ABA830862BF10274001D7E4C /* BottomButtonsView.swift */,
 				ABA8307D2BF0F6C6001D7E4C /* URLs.swift */,
 				ABE5F7E02BFA974600C7DF50 /* Network */,
 				ABA830732BF0F503001D7E4C /* Assets.xcassets */,
@@ -265,7 +265,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABA830872BF10274001D7E4C /* BottomButtonsView.swift in Sources */,
 				AB8914A12BF945FC00FCB2FC /* CardStackView.swift in Sources */,
 				ABA830722BF0F502001D7E4C /* ContentView.swift in Sources */,
 				ABA830832BF0FC1A001D7E4C /* DefinitionCell.swift in Sources */,
@@ -277,6 +276,7 @@
 				AB89149F2BF9451900FCB2FC /* CardView.swift in Sources */,
 				ABA830852BF101FE001D7E4C /* DefinitionViewModel.swift in Sources */,
 				ABA8307E2BF0F6C6001D7E4C /* URLs.swift in Sources */,
+				AB00535D2C0C9EBB001ACFFF /* NotAvailablePhotoView.swift in Sources */,
 				ABA8308F2BF11913001D7E4C /* ScanButton.swift in Sources */,
 				AB8914A72BF9E64F00FCB2FC /* WordDetailView.swift in Sources */,
 				ABE5F7DD2BF9F1DB00C7DF50 /* CardFront.swift in Sources */,

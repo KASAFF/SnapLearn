@@ -11,7 +11,11 @@ import SwiftData
 struct WordListView: View {
     @Environment(\.modelContext) var modelContext
 
-    @State private var words = [WordModel]()
+    @State private var words = [WordModel]() {
+        didSet {
+            print(words)
+        }
+    }
     @State private var showCardStack = false
 
     var body: some View {
@@ -22,9 +26,10 @@ struct WordListView: View {
                         words: words,
                         onLearnAgain: { word in
                             print("Learn Again: \(word.word)")
+                            words.append(word)
                         },
                         onSuccessfullyLearned: { word in
-                            print("Successfully Learned: \(word.word)")
+                            print("Successfully Learned: \(word)")
                             words.removeAll { $0.id == word.id }
                         },
                         onEndLearning: {
