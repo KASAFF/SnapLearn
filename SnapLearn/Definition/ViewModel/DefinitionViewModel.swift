@@ -81,7 +81,7 @@ class DefinitionViewModel: ObservableObject {
         } ?? []
 
         return WordModel(
-            word: wordEntry?.word ?? "",
+            word: wordEntry?.word.capitalized ?? "",
             translation: translation,
             meanings: meanings
         )

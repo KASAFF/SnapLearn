@@ -14,7 +14,6 @@ struct WordEntryWrapper: Codable {
 struct WordEntry: Codable, Identifiable {
     var id: String { word }
     let word: String
-  //  let phonetics: [Phonetic]
     let meanings: [Meaning]
     let sourceUrls: [String]
 

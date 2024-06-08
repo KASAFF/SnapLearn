@@ -14,8 +14,8 @@ final class WordModel {
     let meanings: [MeaningPresentationModel]
 
     init(word: String, translation: String?, meanings: [MeaningPresentationModel]) {
-        self.word = word
-        self.translation = translation
+        self.word = word.capitalized
+        self.translation = translation?.capitalized
         self.meanings = meanings
     }
 }

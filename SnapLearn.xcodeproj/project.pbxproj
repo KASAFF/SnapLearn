@@ -165,10 +165,18 @@
 		ABA8307F2BF0F7DB001D7E4C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ABCE6C132C150FB700EA937D /* Extensions */,
 				ABA830802BF0F7E6001D7E4C /* WordEntity.swift */,
 				ABA8308C2BF10991001D7E4C /* WordModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		ABCE6C132C150FB700EA937D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		ABE5F7DB2BF9F1C800C7DF50 /* CardView */ = {

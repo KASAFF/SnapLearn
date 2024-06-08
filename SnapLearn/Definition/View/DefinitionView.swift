@@ -11,6 +11,7 @@ import SwiftData
 struct DefinitionsView: View {
     @Environment(\.modelContext) private var modelContext
     @StateObject private var viewModel = DefinitionViewModel()
+    @FocusState private var isInputActive: Bool
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -19,6 +20,15 @@ struct DefinitionsView: View {
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(8)
+                    .focused($isInputActive)
+                    .toolbar {
+                        ToolbarItemGroup(placement: .keyboard) {
+                            Spacer()
+                            Button("Done") {
+                                isInputActive = false
+                            }
+                        }
+                    }
 
                 ScanButton(text: $viewModel.newWordText)
                     .frame(width: 100, height: 56, alignment: .leading)
@@ -88,10 +98,11 @@ struct DefinitionsView: View {
                 }
             }
 
-            Spacer() // This will push the buttons to the bottom
+            Spacer()
 
             HStack {
                 Button(action: {
+                    isInputActive = false
                     Task {
                         viewModel.fetchAndTranslate()
                     }
