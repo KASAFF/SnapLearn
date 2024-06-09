@@ -8,13 +8,13 @@
 import Foundation
 
 struct WordEntryWrapper: Codable {
-    let entries: [WordEntry]
+    let entries: [WordEntity]
 }
 
-struct WordEntry: Codable, Identifiable {
+struct WordEntity: Codable, Identifiable {
     var id: String { word }
     let word: String
-    let meanings: [Meaning]
+    let meanings: [MeaningEntity]
     let sourceUrls: [String]
 
     enum CodingKeys: CodingKey {
@@ -31,7 +31,7 @@ struct WordEntry: Codable, Identifiable {
 //    let sourceUrl: String?
 //}
 
-struct Meaning: Codable, Identifiable {
+struct MeaningEntity: Codable, Identifiable {
     var id: UUID = UUID()
     let partOfSpeech: String
     let definitions: [DefinitionEntity]

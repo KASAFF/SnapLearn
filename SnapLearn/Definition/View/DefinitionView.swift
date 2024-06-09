@@ -1,10 +1,3 @@
-//
-//  DefinitionsView.swift
-//  SnapLearn
-//
-//  Created by Aleksey Kosov on 12.05.2024.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -57,44 +50,14 @@ struct DefinitionsView: View {
             }
             .padding(.horizontal)
             .padding(.bottom, 5)
-
-            if let wordEntry = viewModel.wordEntry {
-                Text(wordEntry.word)
-                    .font(.largeTitle)
-                    .bold()
-                    .padding(.horizontal)
-                    .padding(.bottom, 5)
-                ScrollView {
-                    ForEach(Array(wordEntry.meanings.prefix(3).enumerated()), id: \.element.partOfSpeech) { index, meaning in // 2-3 meanings
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text(meaning.partOfSpeech)
-                                .font(.title2)
-                                .bold()
-                            
-                            ForEach(Array(meaning.definitions.prefix(2).enumerated()), id: \.element.definition) { index, definition in // 1-2 definitions per meaning
-                                VStack(alignment: .leading, spacing: 3) {
-                                    Text(definition.definition)
-                                        .font(.body)
-                                        .lineLimit(3)
-                                    if let example = definition.example {
-                                        Text("Example: \(example)")
-                                            .font(.footnote)
-                                            .foregroundColor(.secondary)
-                                            .lineLimit(2)
-                                    }
-                                    if !definition.synonyms.isEmpty {
-                                        Text("Synonyms: \(definition.synonyms.joined(separator: ", "))")
-                                            .font(.footnote)
-                                            .foregroundColor(.secondary)
-                                            .lineLimit(2)
-                                    }
-                                }
-                                .padding(.vertical, 5)
-                            }
-                        }
+            Group {
+                if let wordEntity = viewModel.wordEntity {
+                    Text(wordEntity.word)
+                        .font(.largeTitle)
+                        .bold()
                         .padding(.horizontal)
-                        .padding(.vertical, 5)
-                    }
+                        .padding(.bottom, 5)
+                    MeaningDetailView(meanings: wordEntity.meanings)
                 }
             }
 
@@ -133,7 +96,6 @@ struct DefinitionsView: View {
             .padding(.horizontal)
             .padding(.bottom, 10)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .padding()
 
         .overlay {
@@ -160,10 +122,5 @@ struct DefinitionsView: View {
             print("Failed to save word: \(error)")
         }
     }
-    
+
 }
-
-
-//#Preview {
-//    DefinitionsView(viewModel: .init())
-//}

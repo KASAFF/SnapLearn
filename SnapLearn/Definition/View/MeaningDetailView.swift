@@ -1,30 +1,31 @@
 //
-//  WordDetailView.swift
+//  MeaningDetailView.swift
 //  SnapLearn
 //
-//  Created by Aleksey Kosov on 19.05.2024.
+//  Created by Aleksey Kosov on 09.06.2024.
 //
 
 import SwiftUI
 
-struct WordDetailView: View {
-    let wordModel: WordModel
+struct MeaningDetailView: View {
+
+    let meanings: [MeaningEntity]?
+
+    init(meanings: [MeaningEntity]?) {
+        self.meanings = meanings
+    }
 
     var body: some View {
-        VStack(alignment: .leading) {
-            if let translation = wordModel.translation {
-                Text("Translation: \(translation)")
-                    .font(.headline)
-            }
-
-            ScrollView {
-                ForEach(wordModel.meanings) { meaning in
+        
+        ScrollView {
+            if let meanings {
+                ForEach(meanings.prefix(3), id: \.partOfSpeech) { meaning in // 2-3 meanings
                     VStack(alignment: .leading, spacing: 5) {
                         Text(meaning.partOfSpeech)
                             .font(.title2)
                             .bold()
-
-                        ForEach(meaning.definitions) { definition in
+                        
+                        ForEach(Array(meaning.definitions.prefix(2)), id: \.definition) { definition in // 1-2 definitions per meaning
                             VStack(alignment: .leading, spacing: 3) {
                                 Text(definition.definition)
                                     .font(.body)
@@ -42,6 +43,7 @@ struct WordDetailView: View {
                                         .lineLimit(2)
                                 }
                             }
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                             .padding(.vertical, 5)
                         }
                     }
@@ -49,10 +51,7 @@ struct WordDetailView: View {
                     .padding(.vertical, 5)
                 }
             }
-
-            Spacer()
         }
-        .padding()
-        .navigationTitle(wordModel.word)
     }
+
 }

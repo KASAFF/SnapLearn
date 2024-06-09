@@ -15,7 +15,7 @@ class DefinitionViewModel: ObservableObject {
 
     var wordModel: WordModel?
 
-    @Published var wordEntry: WordEntry?
+    @Published var wordEntity: WordEntity?
     @Published var translation: String?
 
     @Published var isShowingError = false
@@ -23,14 +23,14 @@ class DefinitionViewModel: ObservableObject {
     @Published var languages = ["ru", "es", "fr", "de", "it", "zh"]
     @Published var isLoading = false
 
-    func findDefinition() async -> WordEntry? {
+    func findDefinition() async -> WordEntity? {
         let baseURL = URLs.dictionaryapi
         self.searchedWord = newWordText
         guard let searchURL = URL(string: baseURL + searchedWord) else { return nil }
 
         do {
             let (data, _) = try await URLSession.shared.data(from: searchURL)
-            let wordEntries = try JSONDecoder().decode([WordEntry].self, from: data)
+            let wordEntries = try JSONDecoder().decode([WordEntity].self, from: data)
             return wordEntries.first
         } catch {
             isShowingError = true
@@ -66,16 +66,18 @@ class DefinitionViewModel: ObservableObject {
 
             let model = convertToPresentationModel(wordEntry: wordEntry, translation: translation)
             self.translation = translation
-            self.wordEntry = wordEntry
+            self.wordEntity = wordEntry
             self.wordModel = model
             isLoading = false
         }
     }
 
-    func convertToPresentationModel(wordEntry: WordEntry?, translation: String?) -> WordModel {
+    func convertToPresentationModel(wordEntry: WordEntity?, translation: String?) -> WordModel {
         let meanings = wordEntry?.meanings.map { meaning in
-            MeaningPresentationModel(
+            MeaningEntry(
                 partOfSpeech: meaning.partOfSpeech,
+                antonyms: meaning.antonyms,
+                synonyms: meaning.synonyms,
                 definitions: meaning.definitions.map { .init(entity: $0) }
             )
         } ?? []

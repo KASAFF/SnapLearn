@@ -194,6 +194,50 @@
             endingLineNumber = "81"
             landmarkName = "body"
             landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "A2C0F679-00B0-460E-8346-52BD01455506 - 74209d33663258db"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #2 @Sendable () async -&gt; () in SnapLearn.CardBack.body.getter : some"
+                  moduleName = "SnapLearn"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/supply/Programming/SnapLearn/SnapLearn/SnapLearn/WordList/View/CardView/CardBack.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81">
+               </Location>
+               <Location
+                  uuid = "A2C0F679-00B0-460E-8346-52BD01455506 - a5df15e80ab0fe00"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for closure #2 @Sendable () async -&gt; () in SnapLearn.CardBack.body.getter : some"
+                  moduleName = "SnapLearn"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/supply/Programming/SnapLearn/SnapLearn/SnapLearn/WordList/View/CardView/CardBack.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81">
+               </Location>
+               <Location
+                  uuid = "A2C0F679-00B0-460E-8346-52BD01455506 - 4aa27ca25c7c9cdd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #2 @Sendable () async -&gt; () in SnapLearn.CardBack.body.getter : some"
+                  moduleName = "SnapLearn"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/supply/Programming/SnapLearn/SnapLearn/SnapLearn/WordList/View/CardView/CardBack.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -210,6 +254,138 @@
             endingLineNumber = "65"
             landmarkName = "fetchAndTranslate()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "247B3B3D-CF75-4E54-B9B5-8F55B9EABE46 - 5f9f47e7a5d3a89f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SnapLearn.DefinitionViewModel.fetchAndTranslate() -&gt; ()"
+                  moduleName = "SnapLearn"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/supply/Programming/SnapLearn/SnapLearn/SnapLearn/Definition/ViewModel/DefinitionViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65">
+               </Location>
+               <Location
+                  uuid = "247B3B3D-CF75-4E54-B9B5-8F55B9EABE46 - 62d34262abc68ede"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SnapLearn.DefinitionViewModel.fetchAndTranslate() -&gt; ()"
+                  moduleName = "SnapLearn"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/supply/Programming/SnapLearn/SnapLearn/SnapLearn/Definition/ViewModel/DefinitionViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65">
+               </Location>
+               <Location
+                  uuid = "247B3B3D-CF75-4E54-B9B5-8F55B9EABE46 - 801740fdb9fd6f1d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SnapLearn.DefinitionViewModel.fetchAndTranslate() -&gt; ()"
+                  moduleName = "SnapLearn"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/supply/Programming/SnapLearn/SnapLearn/SnapLearn/Definition/ViewModel/DefinitionViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65">
+               </Location>
+               <Location
+                  uuid = "247B3B3D-CF75-4E54-B9B5-8F55B9EABE46 - a76b4f7888104d5c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SnapLearn.DefinitionViewModel.fetchAndTranslate() -&gt; ()"
+                  moduleName = "SnapLearn"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/supply/Programming/SnapLearn/SnapLearn/SnapLearn/Definition/ViewModel/DefinitionViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3988F06A-F894-41B0-9351-C4AB4E918EA3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SnapLearn/WordList/View/WordDetailView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "3988F06A-F894-41B0-9351-C4AB4E918EA3 - 153880ca1d14ad9d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;SwiftUI.Text&gt;, SwiftUI.ScrollView&lt;SwiftUI.ForEach&lt;Swift.Array&lt;SnapLearn.MeaningPresentationModel&gt;, SwiftData.PersistentIdentifier, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;&gt;, SwiftUI.Spacer)&gt; in SnapLearn.WordDetailView.body.getter : some"
+                  moduleName = "SnapLearn"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/supply/Programming/SnapLearn/SnapLearn/SnapLearn/WordList/View/WordDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20">
+               </Location>
+               <Location
+                  uuid = "3988F06A-F894-41B0-9351-C4AB4E918EA3 - a74d3c066da469e5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;SnapLearn.MeaningPresentationModel&gt;, SwiftData.PersistentIdentifier, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;SwiftUI.Text&gt;, SwiftUI.ScrollView&lt;SwiftUI.ForEach&lt;Swift.Array&lt;SnapLearn.MeaningPresentationModel&gt;, SwiftData.PersistentIdentifier, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;&gt;, SwiftUI.Spacer)&gt; in SnapLearn.WordDetailView.body.getter : some"
+                  moduleName = "SnapLearn"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/supply/Programming/SnapLearn/SnapLearn/SnapLearn/WordList/View/WordDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21">
+               </Location>
+               <Location
+                  uuid = "3988F06A-F894-41B0-9351-C4AB4E918EA3 - f1a6b67d0bae3622"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;SwiftUI.Text&gt;, SwiftUI.ScrollView&lt;SwiftUI.ForEach&lt;Swift.Array&lt;SnapLearn.MeaningEntry&gt;, SwiftData.PersistentIdentifier, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;&gt;, SwiftUI.Spacer)&gt; in SnapLearn.WordDetailView.body.getter : some"
+                  moduleName = "SnapLearn"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/supply/Programming/SnapLearn/SnapLearn/SnapLearn/WordList/View/WordDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20">
+               </Location>
+               <Location
+                  uuid = "3988F06A-F894-41B0-9351-C4AB4E918EA3 - 82ec85d00dbb690d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;SnapLearn.MeaningEntry&gt;, SwiftData.PersistentIdentifier, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;SwiftUI.Text&gt;, SwiftUI.ScrollView&lt;SwiftUI.ForEach&lt;Swift.Array&lt;SnapLearn.MeaningEntry&gt;, SwiftData.PersistentIdentifier, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;&gt;, SwiftUI.Spacer)&gt; in SnapLearn.WordDetailView.body.getter : some"
+                  moduleName = "SnapLearn"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/supply/Programming/SnapLearn/SnapLearn/SnapLearn/WordList/View/WordDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

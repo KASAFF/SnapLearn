@@ -11,9 +11,9 @@ import SwiftData
 final class WordModel {
     let word: String
     let translation: String?
-    let meanings: [MeaningPresentationModel]
+    let meanings: [MeaningEntry]
 
-    init(word: String, translation: String?, meanings: [MeaningPresentationModel]) {
+    init(word: String, translation: String?, meanings: [MeaningEntry]) {
         self.word = word.capitalized
         self.translation = translation?.capitalized
         self.meanings = meanings
@@ -21,18 +21,22 @@ final class WordModel {
 }
 
 @Model
-final class MeaningPresentationModel {
+final class MeaningEntry {
     let partOfSpeech: String
-    let definitions: [Definition]
+    let antonyms: [String]
+    let synonyms: [String]
+    let definitions: [DefinitionEntry]
 
-    init(partOfSpeech: String, definitions: [Definition]) {
+    init(partOfSpeech: String, antonyms: [String], synonyms: [String], definitions: [DefinitionEntry]) {
+        self.antonyms = antonyms
+        self.synonyms = synonyms
         self.partOfSpeech = partOfSpeech
         self.definitions = definitions
     }
 }
 
 @Model
-final class Definition {
+final class DefinitionEntry {
     let definition: String
     let synonyms: [String]
     let antonyms: [String]

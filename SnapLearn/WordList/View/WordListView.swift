@@ -39,7 +39,7 @@ struct WordListView: View {
                 } else {
                     List {
                         ForEach(words) { word in
-                            NavigationLink(destination: WordDetailView(word: word)) {
+                            NavigationLink(destination: WordDetailView(wordModel: word)) {
                                 Text(word.word)
                             }
                             .swipeActions {

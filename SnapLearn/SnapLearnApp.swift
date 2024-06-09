@@ -19,9 +19,6 @@ struct SnapLearnApp: App {
     }
 }
 
-import SwiftData
-import Foundation
-
 class PersistenceController {
     static let shared = PersistenceController()
 
@@ -29,7 +26,7 @@ class PersistenceController {
 
     init() {
         do {
-            container = try ModelContainer(for: WordModel.self, MeaningPresentationModel.self, Definition.self)
+            container = try ModelContainer(for: WordModel.self, MeaningEntry.self, DefinitionEntry.self)
         } catch {
             fatalError("Failed to initialize ModelContainer: \(error)")
         }
