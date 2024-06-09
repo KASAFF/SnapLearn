@@ -12,11 +12,13 @@ final class WordModel {
     let word: String
     let translation: String?
     let meanings: [MeaningEntry]
+    var isLearned: Bool
 
     init(word: String, translation: String?, meanings: [MeaningEntry]) {
         self.word = word.capitalized
         self.translation = translation?.capitalized
         self.meanings = meanings
+        self.isLearned = false
     }
 }
 

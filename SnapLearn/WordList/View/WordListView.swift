@@ -11,11 +11,7 @@ import SwiftData
 struct WordListView: View {
     @Environment(\.modelContext) var modelContext
 
-    @State private var words = [WordModel]() {
-        didSet {
-            print(words)
-        }
-    }
+    @State private var words = [WordModel]()
     @State private var showCardStack = false
 
     var body: some View {
@@ -23,13 +19,15 @@ struct WordListView: View {
             VStack {
                 if showCardStack {
                     CardStackView(
-                        words: words,
+                        words: words.filter { !$0.isLearned },
                         onLearnAgain: { word in
                             print("Learn Again: \(word.word)")
+                            word.isLearned = false
                             words.append(word)
                         },
                         onSuccessfullyLearned: { word in
                             print("Successfully Learned: \(word)")
+                            word.isLearned = true
                             words.removeAll { $0.id == word.id }
                         },
                         onEndLearning: {
@@ -38,17 +36,51 @@ struct WordListView: View {
                     )
                 } else {
                     List {
-                        ForEach(words) { word in
-                            NavigationLink(destination: WordDetailView(wordModel: word)) {
-                                Text(word.word)
-                            }
-                            .swipeActions {
-                                Button(role: .destructive) {
-                                    deleteWord(word)
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
+                        Section {
+                            ForEach(words.filter { !$0.isLearned }) { word in
+                                NavigationLink(destination: WordDetailView(wordModel: word)) {
+                                    Text(word.word)
+                                }
+                                .swipeActions {
+                                    Button {
+                                        withAnimation(.none) {
+                                            word.isLearned = true
+                                        }
+                                    } label: {
+                                        Label("Mark as Learned", systemImage: "checkmark")
+                                    }
+                                    .tint(.green)
+                                    Button(role: .destructive) {
+                                        deleteWord(word)
+                                    } label: {
+                                        Label("Delete", systemImage: "trash")
+                                    }
                                 }
                             }
+                        } header: {
+                            Text("To learn")
+                        }
+                        Section {
+                            ForEach(words.filter { $0.isLearned }) { word in
+                                NavigationLink(destination: WordDetailView(wordModel: word)) {
+                                    Text(word.word)
+                                }
+                                .swipeActions {
+                                    Button("Still learning") {
+                                        withAnimation(.none) {
+                                            word.isLearned = false
+                                        }
+                                    }
+                                    .tint(.orange)
+                                    Button(role: .destructive) {
+                                        deleteWord(word)
+                                    } label: {
+                                        Label("Delete", systemImage: "trash")
+                                    }
+                                }
+                            }
+                        } header: {
+                            Text("Learned already")
                         }
                     }
                     .onAppear {
@@ -91,8 +123,3 @@ struct WordListView: View {
 #Preview {
     WordListView()
 }
-
-#Preview {
-    WordListView()
-}
-
