@@ -44,6 +44,7 @@ struct WordDetailView: View {
                             }
                             .padding(.vertical, 5)
                         }
+                        .frame(alignment: .top)
                     }
                     .padding(.horizontal)
                     .padding(.vertical, 5)
@@ -53,6 +54,6 @@ struct WordDetailView: View {
             Spacer()
         }
         .padding()
-        .navigationTitle(wordModel.word)
+        .navigationTitle(wordModel.wordText)
     }
 }

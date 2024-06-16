@@ -64,7 +64,7 @@ struct CardView: View {
 
     var frontSide: some View {
         VStack {
-            Text(word.word)
+            Text(word.wordText)
                 .font(.largeTitle)
                 .padding()
         }

@@ -8,6 +8,35 @@
 import SwiftUI
 import SwiftData
 
+enum SupportedLanguages: String, CaseIterable {
+    case english = "en"
+    case russian = "ru"
+    case spanish = "es"
+    case french = "fr"
+    case german = "de"
+    case italian = "it"
+    case chinese = "zh"
+
+    var displayName: String {
+        switch self {
+        case .english:
+            return "English"
+        case .russian:
+            return "Russian"
+        case .spanish:
+            return "Spanish"
+        case .french:
+            return "French"
+        case .german:
+            return "German"
+        case .italian:
+            return "Italian"
+        case .chinese:
+            return "Chinese"
+        }
+    }
+}
+
 @MainActor
 class DefinitionViewModel: ObservableObject {
     @Published var newWordText = ""
@@ -17,10 +46,11 @@ class DefinitionViewModel: ObservableObject {
 
     @Published var wordEntity: WordEntity?
     @Published var translation: String?
+    @Published var newWordFetched = false
 
     @Published var isShowingError = false
-    @Published var selectedLanguage = "ru"
-    @Published var languages = ["ru", "es", "fr", "de", "it", "zh"]
+    @Published var selectedLanguage: SupportedLanguages = .russian
+    @Published var languages = SupportedLanguages.allCases
     @Published var isLoading = false
 
     func findDefinition() async -> WordEntity? {
@@ -39,41 +69,42 @@ class DefinitionViewModel: ObservableObject {
         }
     }
 
-    func translateText(targetLang: String) async -> String? {
+    func translateText(originalLang: SupportedLanguages, targetLang: SupportedLanguages) async -> String? {
         let encodedText = searchedWord.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)?.lowercased() ?? ""
-        let urlString = "https://api.mymemory.translated.net/get?q=\(encodedText)&langpair=en|\(targetLang.lowercased())"
+        let urlString = "https://api.mymemory.translated.net/get?q=\(encodedText)&langpair=\(originalLang.rawValue)|\(targetLang.rawValue)"
         guard let url = URL(string: urlString) else { return nil }
 
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             let translationResult = try JSONDecoder().decode(TranslationResult.self, from: data)
             guard translationResult.responseStatus == 200 else { return nil }
-            return translationResult.responseData.translatedText.capitalized
+            return translationResult.responseData.translatedText.removingPercentEncoding?.capitalized
         } catch {
             print("Failed to translate text: \(error)")
             return nil
         }
     }
 
-    func fetchAndTranslate() {
+    func fetchAndTranslate() async {
         Task {
             isLoading = true
             async let wordEntryTask = findDefinition()
-            async let translationTask = translateText(targetLang: selectedLanguage)
+            async let translationTask = translateText(originalLang: .english, targetLang: selectedLanguage)
 
             // Await both tasks simultaneously and then set the properties
             let (wordEntry, translation) = await (wordEntryTask, translationTask)
 
-            let model = convertToPresentationModel(wordEntry: wordEntry, translation: translation)
+            let model = convertToPresentationModel(wordEntity: wordEntry, translation: translation)
             self.translation = translation
             self.wordEntity = wordEntry
             self.wordModel = model
             isLoading = false
+            newWordFetched = true
         }
     }
 
-    func convertToPresentationModel(wordEntry: WordEntity?, translation: String?) -> WordModel {
-        let meanings = wordEntry?.meanings.map { meaning in
+    func convertToPresentationModel(wordEntity: WordEntity?, translation: String?) -> WordModel {
+        let meanings = wordEntity?.meanings.map { meaning in
             MeaningEntry(
                 partOfSpeech: meaning.partOfSpeech,
                 antonyms: meaning.antonyms,
@@ -83,7 +114,7 @@ class DefinitionViewModel: ObservableObject {
         } ?? []
 
         return WordModel(
-            word: wordEntry?.word.capitalized ?? "",
+            word: wordEntity?.word.capitalized ?? "",
             translation: translation,
             meanings: meanings
         )

@@ -19,7 +19,7 @@ struct MeaningDetailView: View {
         
         ScrollView {
             if let meanings {
-                ForEach(meanings.prefix(3), id: \.partOfSpeech) { meaning in // 2-3 meanings
+                ForEach(meanings.prefix(3), id: \.id) { meaning in // 2-3 meanings
                     VStack(alignment: .leading, spacing: 5) {
                         Text(meaning.partOfSpeech)
                             .font(.title2)

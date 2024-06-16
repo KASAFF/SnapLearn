@@ -18,7 +18,7 @@ struct CardFront: View {
         ZStack {
             RoundedRectangle(cornerRadius: 24)
                 .fill(Color.white)
-            Text(word.word)
+            Text(word.wordText)
                 .font(.largeTitle)
                 .padding()
                 .opacity(degree <= 90 || degree >= 270 ? 1 : 0)

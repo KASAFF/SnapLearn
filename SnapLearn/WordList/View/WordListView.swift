@@ -21,7 +21,7 @@ struct WordListView: View {
                     CardStackView(
                         words: words.filter { !$0.isLearned },
                         onLearnAgain: { word in
-                            print("Learn Again: \(word.word)")
+                            print("Learn Again: \(word.wordText)")
                             word.isLearned = false
                             words.append(word)
                         },
@@ -39,7 +39,7 @@ struct WordListView: View {
                         Section {
                             ForEach(words.filter { !$0.isLearned }) { word in
                                 NavigationLink(destination: WordDetailView(wordModel: word)) {
-                                    Text(word.word)
+                                    Text(word.wordText)
                                 }
                                 .swipeActions {
                                     Button {
@@ -63,7 +63,7 @@ struct WordListView: View {
                         Section {
                             ForEach(words.filter { $0.isLearned }) { word in
                                 NavigationLink(destination: WordDetailView(wordModel: word)) {
-                                    Text(word.word)
+                                    Text(word.wordText)
                                 }
                                 .swipeActions {
                                     Button("Still learning") {

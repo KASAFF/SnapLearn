@@ -9,13 +9,13 @@ import SwiftData
 
 @Model
 final class WordModel {
-    let word: String
+    let wordText: String
     let translation: String?
     let meanings: [MeaningEntry]
     var isLearned: Bool
 
     init(word: String, translation: String?, meanings: [MeaningEntry]) {
-        self.word = word.capitalized
+        self.wordText = word.capitalized
         self.translation = translation?.capitalized
         self.meanings = meanings
         self.isLearned = false
@@ -28,6 +28,7 @@ final class MeaningEntry {
     let antonyms: [String]
     let synonyms: [String]
     let definitions: [DefinitionEntry]
+    @Relationship(inverse: \WordModel.meanings) var wordModel: WordModel?
 
     init(partOfSpeech: String, antonyms: [String], synonyms: [String], definitions: [DefinitionEntry]) {
         self.antonyms = antonyms

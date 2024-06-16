@@ -78,7 +78,7 @@ struct CardBack: View {
         .frame(width: width, height: height)
         .rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
         .task {
-            cardImageUrl = await imageFetcher.fetchImage(for: word.word)
+            cardImageUrl = await imageFetcher.fetchImage(for: word.wordText)
         }
     }
 }

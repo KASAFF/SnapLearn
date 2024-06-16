@@ -5,6 +5,8 @@ struct DefinitionsView: View {
     @Environment(\.modelContext) private var modelContext
     @StateObject private var viewModel = DefinitionViewModel()
     @FocusState private var isInputActive: Bool
+    @State private var showAlert = false
+    @State private var alertMessage = ""
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -38,9 +40,9 @@ struct DefinitionsView: View {
 
                 Spacer()
 
-                Picker("Language", selection: $viewModel.selectedLanguage) {
+                Picker("My Language", selection: $viewModel.selectedLanguage) {
                     ForEach(viewModel.languages, id: \.self) { language in
-                        Text(language)
+                        Text(language.displayName)
                             .textCase(.uppercase)
                             .tag(language)
                     }
@@ -67,7 +69,7 @@ struct DefinitionsView: View {
                 Button(action: {
                     isInputActive = false
                     Task {
-                        viewModel.fetchAndTranslate()
+                        await viewModel.fetchAndTranslate()
                     }
                 }) {
                     Text("Find Definition")
@@ -82,7 +84,7 @@ struct DefinitionsView: View {
                 Spacer()
 
                 Button(action: {
-                    Task { await saveWordForFutureLearning() }
+                    Task { saveWordForFutureLearning() }
                 }) {
                     Text("Add to learn list")
                         .bold()
@@ -92,11 +94,15 @@ struct DefinitionsView: View {
                         .cornerRadius(10)
                         .frame(height: 50)
                 }
+                .disabled(!viewModel.newWordFetched)
             }
             .padding(.horizontal)
             .padding(.bottom, 10)
         }
         .padding()
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+        }
 
         .overlay {
             if viewModel.isLoading {
@@ -112,15 +118,28 @@ struct DefinitionsView: View {
 
     }
 
-    func saveWordForFutureLearning() async {
-        guard let word = viewModel.wordModel, !word.word.isEmpty else { return }
+    func saveWordForFutureLearning() {
+        guard let word = viewModel.wordModel, !word.wordText.isEmpty else { return }
+
+        let wordText = word.wordText
+        let predicate = #Predicate<WordModel> { wordModel in
+            wordModel.wordText == wordText
+        }
 
         do {
-            modelContext.insert(word)
-            try modelContext.save()
+            let existingWords = try modelContext.fetch(.init(predicate: predicate))
+            if existingWords.isEmpty {
+                modelContext.insert(word)
+                try modelContext.save()
+                print("Word saved successfully")
+            } else {
+                alertMessage = "The word '\(word.wordText)' is already saved."
+                showAlert = true
+            }
         } catch {
             print("Failed to save word: \(error)")
+            alertMessage = "Failed to save word: \(error.localizedDescription)"
+            showAlert = true
         }
     }
-
 }
