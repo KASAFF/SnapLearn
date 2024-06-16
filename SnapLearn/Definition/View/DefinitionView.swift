@@ -31,27 +31,9 @@ struct DefinitionsView: View {
             .padding()
             .frame(maxWidth: .infinity)
 
-            HStack {
-                if let wordModel = viewModel.wordModel {
-                    Text("Translation: \(wordModel.translationListString)")
-                        .font(.headline)
-                        .padding(.horizontal)
-                }
-
-                Spacer()
-
-                Picker("My Language", selection: $viewModel.selectedLanguage) {
-                    ForEach(viewModel.languages, id: \.self) { language in
-                        Text(language.displayName)
-                            .textCase(.uppercase)
-                            .tag(language)
-                    }
-                }
-                .pickerStyle(MenuPickerStyle())
-                .padding(.trailing)
-            }
-            .padding(.horizontal)
-            .padding(.bottom, 5)
+            LanguagePickerView(selectedLanguage: .russian)
+                .padding(.horizontal)
+                .padding(.bottom, 5)
             Group {
                 if let wordEntity = viewModel.wordEntity {
                     Text(wordEntity.word)
@@ -59,6 +41,11 @@ struct DefinitionsView: View {
                         .bold()
                         .padding(.horizontal)
                         .padding(.bottom, 5)
+                    if let translation = viewModel.translation {
+                        Text("Translation: \(translation)")
+                            .font(.headline)
+                            .padding(.horizontal)
+                    }
                     MeaningDetailView(meanings: wordEntity.meanings)
                 }
             }

@@ -75,11 +75,9 @@ struct CardView: View {
 
     var backSide: some View {
         VStack {
-            if !word.translation.isEmpty {
-                Text(word.firstTranlsation)
+                Text(word.translation)
                     .font(.largeTitle)
                     .padding()
-            }
 
             if let meaning = word.meanings.first {
                 Text(meaning.partOfSpeech)

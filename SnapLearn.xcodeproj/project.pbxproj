@@ -28,6 +28,7 @@
 		ABE5F7DF2BF9F21A00C7DF50 /* CardBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5F7DE2BF9F21A00C7DF50 /* CardBack.swift */; };
 		ABE5F7E22BFA975800C7DF50 /* Unsplash.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5F7E12BFA975800C7DF50 /* Unsplash.swift */; };
 		ABE5F7E52BFA98A200C7DF50 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = ABE5F7E42BFA98A200C7DF50 /* Kingfisher */; };
+		ABEBDE2A2C1EF3F300374164 /* LanguagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEBDE292C1EF3F300374164 /* LanguagePickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		ABE5F7DC2BF9F1DB00C7DF50 /* CardFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFront.swift; sourceTree = "<group>"; };
 		ABE5F7DE2BF9F21A00C7DF50 /* CardBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBack.swift; sourceTree = "<group>"; };
 		ABE5F7E12BFA975800C7DF50 /* Unsplash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unsplash.swift; sourceTree = "<group>"; };
+		ABEBDE292C1EF3F300374164 /* LanguagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				ABA830882BF10459001D7E4C /* DefinitionView.swift */,
 				ABCE6C162C16160400EA937D /* MeaningDetailView.swift */,
+				ABEBDE292C1EF3F300374164 /* LanguagePickerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				ABA8308D2BF10991001D7E4C /* WordModel.swift in Sources */,
 				ABA830892BF10459001D7E4C /* DefinitionView.swift in Sources */,
 				ABA830812BF0F7E6001D7E4C /* WordEntity.swift in Sources */,
+				ABEBDE2A2C1EF3F300374164 /* LanguagePickerView.swift in Sources */,
 				ABA8308B2BF10484001D7E4C /* WordListView.swift in Sources */,
 				ABE5F7DF2BF9F21A00C7DF50 /* CardBack.swift in Sources */,
 				ABCE6C172C16160400EA937D /* MeaningDetailView.swift in Sources */,

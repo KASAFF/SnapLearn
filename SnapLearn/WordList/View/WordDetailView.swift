@@ -12,10 +12,8 @@ struct WordDetailView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            if !wordModel.translation.isEmpty {
-                Text("Translation: \(wordModel.translation.first ?? "")")
+            Text("Translation: \(wordModel.translation)")
                     .font(.headline)
-            }
 
             ScrollView {
                 ForEach(wordModel.meanings) { meaning in
@@ -44,7 +42,7 @@ struct WordDetailView: View {
                             }
                             .padding(.vertical, 5)
                         }
-                        .frame(alignment: .top)
+                        .frame(alignment: .leading)
                     }
                     .padding(.horizontal)
                     .padding(.vertical, 5)
