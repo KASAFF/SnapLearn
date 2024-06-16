@@ -32,8 +32,8 @@ struct DefinitionsView: View {
             .frame(maxWidth: .infinity)
 
             HStack {
-                if let translation = viewModel.wordModel?.translation {
-                    Text("Translation: \(translation)")
+                if let wordModel = viewModel.wordModel {
+                    Text("Translation: \(wordModel.translationListString)")
                         .font(.headline)
                         .padding(.horizontal)
                 }

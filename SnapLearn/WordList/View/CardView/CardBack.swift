@@ -26,9 +26,10 @@ struct CardBack: View {
                 .fill(Color.white)
 
             VStack {
-                if let translation = word.translation {
-                    Text(translation)
-                        .font(.largeTitle)
+                if !word.translation.isEmpty {
+                    ForEach(word.translation, id: \.self) { translation in
+                        Text(translation)
+                    }
                 }
 
                 if let meaning = word.meanings.first {

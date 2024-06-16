@@ -12,8 +12,8 @@ struct WordDetailView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            if let translation = wordModel.translation {
-                Text("Translation: \(translation)")
+            if !wordModel.translation.isEmpty {
+                Text("Translation: \(wordModel.translation.first ?? "")")
                     .font(.headline)
             }
 

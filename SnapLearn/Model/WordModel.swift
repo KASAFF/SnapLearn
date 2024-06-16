@@ -10,13 +10,21 @@ import SwiftData
 @Model
 final class WordModel {
     let wordText: String
-    let translation: String?
+    let translation: [String]
     let meanings: [MeaningEntry]
     var isLearned: Bool
 
-    init(word: String, translation: String?, meanings: [MeaningEntry]) {
+    var firstTranlsation: String {
+        return translation.first ?? ""
+    }
+
+    var translationListString: String {
+        return translation.joined(separator: ", ")
+    }
+
+    init(word: String, translation: [String], meanings: [MeaningEntry]) {
         self.wordText = word.capitalized
-        self.translation = translation?.capitalized
+        self.translation = translation
         self.meanings = meanings
         self.isLearned = false
     }

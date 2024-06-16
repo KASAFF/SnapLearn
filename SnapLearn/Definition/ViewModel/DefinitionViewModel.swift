@@ -45,7 +45,7 @@ class DefinitionViewModel: ObservableObject {
     var wordModel: WordModel?
 
     @Published var wordEntity: WordEntity?
-    @Published var translation: String?
+    @Published var translation: [String]?
     @Published var newWordFetched = false
 
     @Published var isShowingError = false
@@ -69,19 +69,20 @@ class DefinitionViewModel: ObservableObject {
         }
     }
 
-    func translateText(originalLang: SupportedLanguages, targetLang: SupportedLanguages) async -> String? {
+    func translateText(originalLang: SupportedLanguages, targetLang: SupportedLanguages) async -> [String] {
         let encodedText = searchedWord.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)?.lowercased() ?? ""
         let urlString = "https://api.mymemory.translated.net/get?q=\(encodedText)&langpair=\(originalLang.rawValue)|\(targetLang.rawValue)"
-        guard let url = URL(string: urlString) else { return nil }
+        guard let url = URL(string: urlString) else { return [] }
 
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             let translationResult = try JSONDecoder().decode(TranslationResult.self, from: data)
-            guard translationResult.responseStatus == 200 else { return nil }
-            return translationResult.responseData.translatedText.removingPercentEncoding?.capitalized
+            let matches = translationResult.matches
+            let translations = matches.prefix(2).map { $0.translation.capitalized }
+            return translations
         } catch {
             print("Failed to translate text: \(error)")
-            return nil
+            return []
         }
     }
 
@@ -103,7 +104,7 @@ class DefinitionViewModel: ObservableObject {
         }
     }
 
-    func convertToPresentationModel(wordEntity: WordEntity?, translation: String?) -> WordModel {
+    func convertToPresentationModel(wordEntity: WordEntity?, translation: [String]) -> WordModel {
         let meanings = wordEntity?.meanings.map { meaning in
             MeaningEntry(
                 partOfSpeech: meaning.partOfSpeech,
@@ -123,8 +124,11 @@ class DefinitionViewModel: ObservableObject {
 }
 
 struct TranslationResult: Codable {
-    let responseData: ResponseData
-    let responseStatus: Int?
+    let matches: [Match]
+}
+
+struct Match: Codable {
+    let translation: String
 }
 
 struct ResponseData: Codable {
