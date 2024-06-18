@@ -79,6 +79,7 @@
 		AB1E1B612C22203000DB4970 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AB1E1B5C2C221EC100DB4970 /* SupportedLanguages.swift */,
 				ABA830802BF0F7E6001D7E4C /* WordEntity.swift */,
 				ABA8308C2BF10991001D7E4C /* WordModel.swift */,
 			);
@@ -92,13 +93,14 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
-		AB1E1B632C22206600DB4970 /* SharedComponents */ = {
+		AB1E1B662C2222E800DB4970 /* ReusableViews */ = {
 			isa = PBXGroup;
 			children = (
 				ABA8308E2BF11913001D7E4C /* ScanButton.swift */,
 				AB1E1B642C2220E800DB4970 /* TextInputView.swift */,
+				ABEBDE292C1EF3F300374164 /* LanguagePickerView.swift */,
 			);
-			path = SharedComponents;
+			path = ReusableViews;
 			sourceTree = "<group>";
 		};
 		AB89149A2BF9041600FCB2FC /* WordListModule */ = {
@@ -135,9 +137,9 @@
 		AB8914A32BF9E50900FCB2FC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AB1E1B662C2222E800DB4970 /* ReusableViews */,
 				ABA830882BF10459001D7E4C /* DefinitionView.swift */,
 				ABCE6C162C16160400EA937D /* MeaningDetailView.swift */,
-				ABEBDE292C1EF3F300374164 /* LanguagePickerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,7 +182,6 @@
 				ABA8306F2BF0F502001D7E4C /* SnapLearnApp.swift */,
 				ABA830712BF0F502001D7E4C /* ContentView.swift */,
 				ABA8307F2BF0F7DB001D7E4C /* Shared */,
-				AB1E1B632C22206600DB4970 /* SharedComponents */,
 				AB8914A22BF9E4FB00FCB2FC /* DefinitionModule */,
 				AB89149A2BF9041600FCB2FC /* WordListModule */,
 				ABE5F7E02BFA974600C7DF50 /* Network */,
@@ -202,7 +203,6 @@
 			isa = PBXGroup;
 			children = (
 				AB1E1B5E2C221F0300DB4970 /* Service */,
-				AB1E1B5C2C221EC100DB4970 /* SupportedLanguages.swift */,
 				AB1E1B612C22203000DB4970 /* Models */,
 			);
 			path = Shared;

@@ -29,3 +29,7 @@ struct LanguagePickerView: View {
         .frame(maxWidth: .infinity, alignment: .trailing)
     }
 }
+
+#Preview {
+    LanguagePickerView(selectedLanguage: .constant(.russian))
+}
