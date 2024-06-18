@@ -14,14 +14,6 @@ final class WordModel {
     let meanings: [MeaningEntry]
     var isLearned: Bool
 
-//    var firstTranlsation: String {
-//        return translation.first ?? ""
-//    }
-//
-//    var translationListString: String {
-//        return translation.joined(separator: ", ")
-//    }
-
     init(word: String, translation: String, meanings: [MeaningEntry]) {
         self.wordText = word.capitalized
         self.translation = translation
@@ -36,7 +28,6 @@ final class MeaningEntry {
     let antonyms: [String]
     let synonyms: [String]
     let definitions: [DefinitionEntry]
-//    @Relationship(inverse: \WordModel.meanings) var wordModel: WordModel?
 
     init(partOfSpeech: String, antonyms: [String], synonyms: [String], definitions: [DefinitionEntry]) {
         self.antonyms = antonyms

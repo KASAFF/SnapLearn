@@ -28,7 +28,6 @@ struct ActionMenuView_UI: UIViewRepresentable {
     func makeUIView(context: Context) -> some UIView {
 
 
-        // A UIButton can hold the menu, it is a long press to get it to come up
         let textFromCamera = UIAction.captureTextFromCamera(
             responder: context.coordinator,
             identifier: nil)
@@ -38,7 +37,7 @@ struct ActionMenuView_UI: UIViewRepresentable {
     func updateUIView(_ uiView: UIViewType, context: Context) {
 
     }
-    //Making the Coordinator a UIResponder as! UIKeyInput gives access to the text
+
     class Coordinator: UIResponder, UIKeyInput{
         var hasText: Bool {
             !parent.text.isEmpty
@@ -50,7 +49,6 @@ struct ActionMenuView_UI: UIViewRepresentable {
             self.parent = parent
         }
         func insertText(_ text: String) {
-            //Update the @Binding
             parent.text = text
         }
 

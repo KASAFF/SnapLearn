@@ -3,6 +3,9 @@ import SwiftData
 
 struct DefinitionsView: View {
     @Environment(\.modelContext) private var modelContext
+
+    // MARK: - State Properties
+
     @StateObject private var viewModel = DefinitionViewModel()
     @FocusState private var isInputActive: Bool
     @State private var showAlert = false
@@ -47,28 +50,10 @@ struct DefinitionsView: View {
 
     private var inputSection: some View {
         VStack {
-            HStack {
-                TextField(Constants.enterWordPlaceholder, text: $viewModel.newWordText)
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(8)
-                    .focused($isInputActive)
-                    .toolbar {
-                        ToolbarItemGroup(placement: .keyboard) {
-                            Spacer()
-                            Button(Constants.doneButton) {
-                                isInputActive = false
-                            }
-                        }
-                    }
-
-                ScanButton(text: $viewModel.newWordText)
-                    .frame(width: 100, height: 56, alignment: .leading)
-            }
-            .padding()
-            .frame(maxWidth: .infinity)
-
-            LanguagePickerView(selectedLanguage: .russian)
+            TextInputView(text: $viewModel.newWordText)
+                .padding()
+                .frame(maxWidth: .infinity)
+            LanguagePickerView(selectedLanguage: $viewModel.selectedLanguage)
                 .padding(.horizontal)
                 .padding(.bottom, 5)
         }

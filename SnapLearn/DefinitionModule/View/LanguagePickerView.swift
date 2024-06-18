@@ -9,11 +9,7 @@ import SwiftUI
 
 struct LanguagePickerView: View {
 
-    @State private var selectedLanguage: SupportedLanguage
-
-    init(selectedLanguage: SupportedLanguage) {
-        self.selectedLanguage = selectedLanguage
-    }
+    @Binding var selectedLanguage: SupportedLanguage
 
     var body: some View {
         HStack {
