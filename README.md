@@ -39,6 +39,7 @@ CardStackView(
         // Логика для завершения процесса изучения
     }
 )
+```
 
 #### Переиспользуемый компонент `TextInputView`
 
@@ -52,6 +53,7 @@ CardStackView(
 **Пример использования:**
 ```swift
 TextInputView(text: $viewModel.newWordText)
+```
 
 
 ### 2. Повышение уровня знаний в системных фреймворках, таких как SwiftData
@@ -91,3 +93,4 @@ private func saveWordForFutureLearning() {
         showAlert = true
     }
 }
+```
