@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct WordDetailView: View {
+
+    // MARK: - Internal Properties
+
     let wordModel: WordModel
 
     var body: some View {
         VStack(alignment: .leading) {
             Text("Translation: \(wordModel.translation)")
                     .font(.headline)
-
             ScrollView {
                 ForEach(wordModel.meanings) { meaning in
                     VStack(alignment: .leading, spacing: 5) {

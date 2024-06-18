@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AB00535D2C0C9EBB001ACFFF /* NotAvailablePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00535C2C0C9EBB001ACFFF /* NotAvailablePhotoView.swift */; };
+		AB1E1B5B2C21FBE600DB4970 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1E1B5A2C21FBE600DB4970 /* CardView.swift */; };
 		AB89149C2BF9042A00FCB2FC /* WordListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89149B2BF9042A00FCB2FC /* WordListViewModel.swift */; };
-		AB89149F2BF9451900FCB2FC /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89149E2BF9451900FCB2FC /* CardView.swift */; };
 		AB8914A12BF945FC00FCB2FC /* CardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8914A02BF945FC00FCB2FC /* CardStackView.swift */; };
 		AB8914A72BF9E64F00FCB2FC /* WordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8914A62BF9E64F00FCB2FC /* WordDetailView.swift */; };
 		ABA830702BF0F502001D7E4C /* SnapLearnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA8306F2BF0F502001D7E4C /* SnapLearnApp.swift */; };
@@ -24,8 +24,6 @@
 		ABA8308D2BF10991001D7E4C /* WordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA8308C2BF10991001D7E4C /* WordModel.swift */; };
 		ABA8308F2BF11913001D7E4C /* ScanButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA8308E2BF11913001D7E4C /* ScanButton.swift */; };
 		ABCE6C172C16160400EA937D /* MeaningDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCE6C162C16160400EA937D /* MeaningDetailView.swift */; };
-		ABE5F7DD2BF9F1DB00C7DF50 /* CardFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5F7DC2BF9F1DB00C7DF50 /* CardFront.swift */; };
-		ABE5F7DF2BF9F21A00C7DF50 /* CardBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5F7DE2BF9F21A00C7DF50 /* CardBack.swift */; };
 		ABE5F7E22BFA975800C7DF50 /* Unsplash.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE5F7E12BFA975800C7DF50 /* Unsplash.swift */; };
 		ABE5F7E52BFA98A200C7DF50 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = ABE5F7E42BFA98A200C7DF50 /* Kingfisher */; };
 		ABEBDE2A2C1EF3F300374164 /* LanguagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEBDE292C1EF3F300374164 /* LanguagePickerView.swift */; };
@@ -33,8 +31,8 @@
 
 /* Begin PBXFileReference section */
 		AB00535C2C0C9EBB001ACFFF /* NotAvailablePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotAvailablePhotoView.swift; sourceTree = "<group>"; };
+		AB1E1B5A2C21FBE600DB4970 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		AB89149B2BF9042A00FCB2FC /* WordListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewModel.swift; sourceTree = "<group>"; };
-		AB89149E2BF9451900FCB2FC /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		AB8914A02BF945FC00FCB2FC /* CardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackView.swift; sourceTree = "<group>"; };
 		AB8914A62BF9E64F00FCB2FC /* WordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailView.swift; sourceTree = "<group>"; };
 		ABA8306C2BF0F502001D7E4C /* SnapLearn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapLearn.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,8 +48,6 @@
 		ABA8308C2BF10991001D7E4C /* WordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordModel.swift; sourceTree = "<group>"; };
 		ABA8308E2BF11913001D7E4C /* ScanButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanButton.swift; sourceTree = "<group>"; };
 		ABCE6C162C16160400EA937D /* MeaningDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeaningDetailView.swift; sourceTree = "<group>"; };
-		ABE5F7DC2BF9F1DB00C7DF50 /* CardFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFront.swift; sourceTree = "<group>"; };
-		ABE5F7DE2BF9F21A00C7DF50 /* CardBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBack.swift; sourceTree = "<group>"; };
 		ABE5F7E12BFA975800C7DF50 /* Unsplash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unsplash.swift; sourceTree = "<group>"; };
 		ABEBDE292C1EF3F300374164 /* LanguagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -185,9 +181,7 @@
 		ABE5F7DB2BF9F1C800C7DF50 /* CardView */ = {
 			isa = PBXGroup;
 			children = (
-				AB89149E2BF9451900FCB2FC /* CardView.swift */,
-				ABE5F7DC2BF9F1DB00C7DF50 /* CardFront.swift */,
-				ABE5F7DE2BF9F21A00C7DF50 /* CardBack.swift */,
+				AB1E1B5A2C21FBE600DB4970 /* CardView.swift */,
 			);
 			path = CardView;
 			sourceTree = "<group>";
@@ -283,15 +277,13 @@
 				ABA830812BF0F7E6001D7E4C /* WordEntity.swift in Sources */,
 				ABEBDE2A2C1EF3F300374164 /* LanguagePickerView.swift in Sources */,
 				ABA8308B2BF10484001D7E4C /* WordListView.swift in Sources */,
-				ABE5F7DF2BF9F21A00C7DF50 /* CardBack.swift in Sources */,
+				AB1E1B5B2C21FBE600DB4970 /* CardView.swift in Sources */,
 				ABCE6C172C16160400EA937D /* MeaningDetailView.swift in Sources */,
-				AB89149F2BF9451900FCB2FC /* CardView.swift in Sources */,
 				ABA830852BF101FE001D7E4C /* DefinitionViewModel.swift in Sources */,
 				ABA8307E2BF0F6C6001D7E4C /* URLs.swift in Sources */,
 				AB00535D2C0C9EBB001ACFFF /* NotAvailablePhotoView.swift in Sources */,
 				ABA8308F2BF11913001D7E4C /* ScanButton.swift in Sources */,
 				AB8914A72BF9E64F00FCB2FC /* WordDetailView.swift in Sources */,
-				ABE5F7DD2BF9F1DB00C7DF50 /* CardFront.swift in Sources */,
 				ABE5F7E22BFA975800C7DF50 /* Unsplash.swift in Sources */,
 				AB89149C2BF9042A00FCB2FC /* WordListViewModel.swift in Sources */,
 				ABA830702BF0F502001D7E4C /* SnapLearnApp.swift in Sources */,
