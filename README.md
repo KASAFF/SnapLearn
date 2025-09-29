@@ -108,3 +108,4 @@ Changelog: batch3 entry 25 - 2025-09-29T17:48:00Z - 5446
 Changelog: batch3 entry 26 - 2025-09-29T17:48:00Z - 10738
 Changelog: batch3 entry 27 - 2025-09-29T17:48:00Z - 3503
 Changelog: batch3 entry 28 - 2025-09-29T17:48:00Z - 28935
+Changelog: batch3 entry 29 - 2025-09-29T17:48:00Z - 17460
