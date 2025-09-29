@@ -1,12 +1,14 @@
 # SnapLearn
 
-SnapLearn is an interactive language learning application that enables users to expand their vocabulary and enhance their language skills. The app serves as an effective tool for expanding vocabulary and enhancing language learning through interactive features.
+SnapLearn is an interactive language learning application that enables users to expand their vocabulary and enhance their language skills. The app serves as an effective tool for expanding vocabulary and enhancing language learning through interactive features. Built with SwiftUI and leveraging modern iOS technologies, SnapLearn provides a seamless and engaging learning experience.
 
 ## Features
 
 - Interactive quizzes
 - Vocabulary building exercises
 - User-friendly interface
+- Advanced SwiftData integration
+- Real-time text recognition with Live Text
 
 ## Installation
 
