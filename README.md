@@ -23,3 +23,4 @@ To install SnapLearn, follow the instructions below:
 We welcome contributions to improve SnapLearn! Please refer to our CONTRIBUTING.md for guidelines.Changelog: entry 1 - 2025-09-29T17:34:34Z - 24857
 Changelog: entry 2 - 2025-09-29T17:34:34Z - 23962
 Changelog: entry 3 - 2025-09-29T17:34:34Z - 15158
+Changelog: entry 4 - 2025-09-29T17:34:34Z - 31497
