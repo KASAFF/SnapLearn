@@ -166,3 +166,4 @@ Changelog: batch3 entry 83 - 2025-09-29T17:48:01Z - 8558
 Changelog: batch3 entry 84 - 2025-09-29T17:48:01Z - 18304
 Changelog: batch3 entry 85 - 2025-09-29T17:48:01Z - 18439
 Changelog: batch3 entry 86 - 2025-09-29T17:48:01Z - 18044
+Changelog: batch3 entry 87 - 2025-09-29T17:48:01Z - 13895
